@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+client/node_modules/.cache/
+
+client/node_modules/
+server/node_modules/
+build/
