@@ -2,6 +2,7 @@ body {
   background-color: #e3e3e3;
 }
 
+/* CSS Elements intented for the landing page */
 .landingText {
   text-align: center;
 }
@@ -11,4 +12,21 @@ body {
   flex-direction: row;  
   align-items: center;
   justify-content: center; 
-}
+} 
+
+/* CSS Elements intented for the home page */
+.homeIntroSection { 
+  height: 100vh; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;  
+} 
+
+.homeIntroContent {
+  display: flex;
+  flex-direction: column;  
+  align-items: left;
+  justify-content: center; 
+} 
