@@ -11,7 +11,7 @@ function StickyHeader() {
     return (
         <header className="headerSection"> 
                 
-            <p className="headerTitle">Resturant Name</p> 
+            <p className="headerTitle">Jasmine Dragon</p> 
             
             <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
                 <p className="headerBtnContent">Home</p> 

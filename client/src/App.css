@@ -15,8 +15,12 @@ body {
 } 
 
 /* CSS Elements intented for the home page */
-.homeIntroSection { 
+.introSection {
+  position: relative;
   height: 100vh; 
+  width: 100%;
+
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: row;  
@@ -24,9 +28,152 @@ body {
   justify-content: center;  
 } 
 
-.homeIntroContent {
+.introContent { 
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  padding: 2.5rem;
+
+  background-color: #e3e3e3;
+
   display: flex;
   flex-direction: column;  
   align-items: left;
   justify-content: center; 
 } 
+
+.introDesc { 
+  font-size: 1rem;
+
+  color: #151515;
+}
+
+.introMenuButton {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+
+  background-color: #f76350;
+  color: white;
+  font-size: 1rem; 
+  text-decoration: none; 
+
+  transition: transform 0.2s ease-in-out;
+} 
+
+.introMenuButton:hover {
+  background-color: #ff3500; 
+
+  transform: scale(1.1);
+}
+
+.introImage {
+  width: auto;
+  height: 100vh; 
+
+  display: block;
+  margin: 0 auto;
+}
+
+.newsSection, .aboutSection, .contactSection {
+  padding: 1rem 3rem 1rem;
+}  
+
+.newsContent {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutSection {  
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.aboutImage {
+  width: clamp(15rem, 25vw, 1000vw);
+  height: auto;
+}
+
+.reviewSection {
+  width: auto;
+  height: 60vh;
+
+  background-image: url("images/food_spread_2.jpg"); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.reviewContent {
+  background-color: #00000080; 
+  color: white;
+}
+
+.reviewHeader {
+  text-align: center;
+}  
+
+.reviewDisplay {
+  margin: 0 5rem 0;
+}
+
+.reviewImage { 
+  height: 60vh;
+  width: 100%; 
+} 
+
+.footerSection {
+  width: 100%; 
+
+  background-color: #151515;
+  color: white; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.footerContent { 
+  margin: 5rem;
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
+}
+
+@media (max-width: 768px) { 
+
+ .introContent {
+    width: 100%; 
+    transform: translate(-50%, -50%);
+ } 
+
+ .introDesc {
+    padding: 0 2rem 0;
+  }
+
+  .introHeader, .introPhoneHeader, .newsHeader, .aboutHeader, .contactHeader {
+    text-align: center;
+  }  
+
+  .aboutSection {
+    flex-direction: column;  
+  } 
+
+  .footerSection {
+    flex-direction: column;  
+  } 
+
+}
