@@ -1,0 +1,101 @@
+.reviewSection {
+  width: auto;
+  height: 60vh;
+
+  background-image: url("../images/food_spread_2.jpg"); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.reviewContent { 
+  position: relative;
+  height: 40vh; 
+  overflow: hidden;
+
+  background-color: #00000080; 
+  color: white; 
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewHeader {
+  text-align: center;
+}  
+
+.reviewDisplay { 
+  position: relative;
+  margin: 0 5rem 0; 
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+} 
+
+.reviewSlide {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
+}
+
+.reviewName {
+  text-align: center;
+  margin-top: 0;
+} 
+
+.reviewFrom { 
+  color: rgb(200, 200, 200);
+
+  text-align: center;
+}
+
+.reviewButtonPrev {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffc400; 
+    left: 0;
+} 
+
+.reviewButtonNext {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffc400; 
+    right: 0;
+}
+
+.reviewButtonPrev, .reviewButtonNext { 
+  display: block;
+  margin: 0 auto;
+  padding: 1rem; 
+
+  background-color: #f76350;
+  color: white; 
+  border: none;
+  font-size: 1rem;
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.reviewButtonPrev:hover, .reviewButtonNext:hover {
+  background-color:  #ff3500; 
+
+  transform: translateY(-50%) scale(1.1);
+}
+
+@media (max-width: 768px) { 
+  .reviewContent { 
+    width: 100vw;
+  }
+}

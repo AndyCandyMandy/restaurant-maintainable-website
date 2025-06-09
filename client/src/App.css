@@ -45,10 +45,15 @@ body {
   flex-direction: column;  
   align-items: left;
   justify-content: center; 
-} 
+}  
+
+.introHeader, .introPhoneHeader {
+    margin: 0 0 1rem 0;
+}  
 
 .introDesc { 
-  font-size: 1rem;
+  font-size: 1rem; 
+  margin: 0 0 1rem 0;
 
   color: #151515;
 }
@@ -105,7 +110,7 @@ body {
   height: auto;
 } 
 
-.specialSection {
+.specialSection { 
   display: flex;
   flex-direction: column;  
   align-items: center;
@@ -116,45 +121,21 @@ body {
   text-align: center;
 } 
 
-.specialContent {
+.specialContent {  
   display: flex;
   flex-direction: row;  
   align-items: center;
   justify-content: center; 
 }
 
-.reviewSection {
-  width: auto;
-  height: 60vh;
-
-  background-image: url("images/food_spread_2.jpg"); 
-  background-size: cover; 
-  background-position: center;
-  background-repeat: no-repeat; 
-
-  display: flex;
-  flex-direction: row;  
-  align-items: center;
-  justify-content: center; 
-} 
-
-.reviewContent {
-  background-color: #00000080; 
-  color: white;
+.specialItem {
+  background-color: white; 
+  margin: 1rem;
 }
 
-.reviewHeader {
-  text-align: center;
-}  
-
-.reviewDisplay {
-  margin: 0 5rem 0;
+.specialDesc {
+  margin: 1rem;
 }
-
-.reviewImage { 
-  height: 60vh;
-  width: 100%; 
-}  
 
 .contactSection {
   display: flex;

@@ -1,10 +1,9 @@
 import {Link} from "react-router-dom"; 
 
 import StickyHeader from "../../components/stickyHeader.js"; 
+import ReviewSection from "../../components/reviewCarousel.js"; 
 
 import FoodShot_1 from "../../images/food_shot_1.jpg"; 
-import FoodShot_2 from "../../images/food_shot_2.jpg";  
-import FoodShot_3 from "../../images/food_shot_3.jpg"; 
 
 function homePage() { 
     return (
@@ -67,33 +66,35 @@ function homePage() {
                 <p className="specialHeader">Please check out our special menu items of the day!</p>
                 <div className="specialContent">
 
-                    <div>
-                        <img className="aboutImage" src={FoodShot_1} alt=""/>
+                    <div className="specialItem">
+                        <h3 className="specialDesc">Special #1:</h3>
+                        <p className="specialDesc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie.
+                        </p> 
+                        <p className="specialDesc">$6.95</p>
                     </div> 
 
-                    <div> 
-                        <img className="aboutImage" src={FoodShot_2} alt=""/> 
+                    <div className="specialItem"> 
+                        <h3 className="specialDesc">Special #2:</h3>
+                        <p className="specialDesc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie.
+                        </p> 
+                        <p className="specialDesc">$7.95</p> 
                     </div> 
 
-                    <div>
-                        <img className="aboutImage" src={FoodShot_3} alt=""/>
+                    <div className="specialItem"> 
+                        <h3 className="specialDesc">Special #3:</h3>
+                        <p className="specialDesc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie.
+                        </p> 
+                        <p className="specialDesc">$7.95</p>
                     </div>
 
                 </div>
             </section>
 
 
-            <section className="reviewSection"> 
-                <div className="reviewContent">
-                    <h1 className="reviewHeader">Our Happy Customers</h1>  
-                    <div className="reviewDisplay">
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus. Nam accumsan a ex ac molestie. Nulla vel accumsan tellus. Quisque eget ex urna. Aenean pharetra eget neque et euismod.
-                        </p>
-                    </div>
-                    
-                </div> 
-            </section>  
+            <ReviewSection></ReviewSection>
 
 
             <section className="contactSection" id="contactId"> 
