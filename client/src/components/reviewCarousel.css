@@ -105,7 +105,9 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: #ffc400; 
-    left: 0;
+    left: 0; 
+
+    cursor: pointer; 
 } 
 
 .reviewButtonNext {
@@ -113,7 +115,9 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: #ffc400; 
-    right: 0;
+    right: 0; 
+
+    cursor: pointer; 
 }
 
 .reviewButtonPrev, .reviewButtonNext { 

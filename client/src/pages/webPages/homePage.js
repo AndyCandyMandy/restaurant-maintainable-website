@@ -25,7 +25,8 @@ function homePage() {
  
 
             <section className="newsSection" id="newsId">
-                <h1 className="newsHeader">Annoucments</h1>
+                <h1 className="newsHeader">Annoucments</h1> 
+
                 <table className="newsContent"> 
                     <thread>
                         <th>Date</th>
@@ -33,11 +34,13 @@ function homePage() {
                         <th>Headline</th> 
                     </thread> 
                     <tbody> 
+
                         <tr>
                             <th>June 2nd 2023</th> 
                             <td>New Item</td> 
                             <td>New Pork Springrolls!</td>
                         </tr> 
+                        
                         <tr>
                             <th>Dec 24th 2023</th> 
                             <td>Important</td> 
@@ -45,8 +48,8 @@ function homePage() {
                         </tr>
                         
                     </tbody>
-                    
-                </table>
+                </table> 
+
             </section>
 
 
@@ -63,7 +66,7 @@ function homePage() {
 
             <section className="specialSection" id="specialId">
                 <h1 className="specialHeader">Specials of the Day</h1>
-                <p className="specialHeader">Please check out our special menu items of the day!</p>
+                <h3 className="specialIntro">Please check out our special menu items of the day!</h3>
                 <div className="specialContent">
 
                     <div className="specialItem">

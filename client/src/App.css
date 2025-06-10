@@ -118,8 +118,14 @@ body {
 } 
 
 .specialHeader {
-  text-align: center;
+  text-align: center; 
+  margin: 1rem;
 } 
+
+.specialIntro {
+  text-align: center; 
+  margin: 5px 0 1rem;
+}
 
 .specialContent {  
   display: flex;
