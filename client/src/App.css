@@ -1,5 +1,6 @@
 body {
-  background-color: #e3e3e3;
+  background-color: #e3e3e3; 
+
 }
 
 /* CSS Elements intented for the landing page */
@@ -48,7 +49,7 @@ body {
 }  
 
 .introHeader, .introPhoneHeader {
-    margin: 0 0 1rem 0;
+  margin: 0 0 1rem 0;
 }  
 
 .introDesc { 
@@ -77,37 +78,44 @@ body {
   transform: scale(1.1);
 }
 
-.newsSection, .aboutSection, .specialSection, .contactSection {
+.aboutSection, .specialSection, .contactSection {
   padding: 1rem 3rem 1rem;
 }  
 
-.newsHeader {
-  text-align: center;
-}
-
-.newsContent {
-  display: flex;
-  flex-direction: column;  
-  align-items: center;
-  justify-content: center;
-}
-
 .aboutSection {  
+  margin: 1rem 0 0; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: top;
+  justify-content: center; 
+} 
+
+.aboutHeader {
+  margin-bottom: 2rem;
+}
+
+.aboutContent { 
+  margin-right: 2.5rem;
+} 
+
+.aboutDesc { 
+  margin: 5rem 0 1rem;
+  text-align: center; 
+}
+
+.aboutImageBox {
   display: flex;
   flex-direction: row;  
   align-items: center;
   justify-content: center; 
-} 
-
-.aboutMenuButton:hover {
-  background-color: #ff3500; 
-
-  transform: scale(1.1);
 }
 
 .aboutImage {
-  width: clamp(15rem, 25vw, 1000vw);
+  width: clamp(150px, 20vw, 500px);        
   height: auto;
+  object-fit: contain; 
+  display: block;
 } 
 
 .specialSection { 
@@ -119,7 +127,7 @@ body {
 
 .specialHeader {
   text-align: center; 
-  margin: 1rem;
+  margin: 1rem 0 2rem;
 } 
 
 .specialIntro {
@@ -146,9 +154,13 @@ body {
 .contactSection {
   display: flex;
   flex-direction: row;  
-  align-items: center;
+  align-items: top;
   justify-content: center; 
 } 
+
+.contactHeader {
+  margin: 1rem 0 2rem;
+}
 
 .contactMap {
   width: 100%; 
@@ -156,11 +168,32 @@ body {
 }
 
 .contactContent {
-  margin: 0 5rem 0;
+  margin-left: 5rem;
+}
+
+.timeTable { 
+  width: clamp(20vw, 24vw, 25vw);
+  padding: 0; 
+} 
+
+.timeContent { 
+  list-style-type: none;
+  display: flex; 
+} 
+
+.timeContent span { 
+  white-space: nowrap;
+  width: 10vw; 
+  flex: 1;
+} 
+
+.timeContent span:last-child {
+  text-align: right;
 }
 
 .footerSection {
   width: 100%; 
+  padding-top: 5rem;
 
   background-color: #151515;
   color: white; 
@@ -172,13 +205,35 @@ body {
 } 
 
 .footerContent { 
-  margin: 5rem;
+  margin: 0 5rem 5rem;
 
   display: flex;
   flex-direction: column;  
   align-items: center;
   justify-content: center; 
+} 
+
+.socialMediaBox {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
 }
+
+.socialMediaIcon {
+  width: 2.5rem; 
+  height: 2.5rem;
+
+  margin: 0 5px 0; 
+
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+} 
+
+.socialMediaIcon:hover {
+  transform: scale(1.1);
+}
+
 
 @media (max-width: 768px) { 
 
@@ -197,18 +252,35 @@ body {
 
   .aboutSection {
     flex-direction: column;  
+    align-items: center;
   } 
+
+  .aboutContent {
+    margin: 0;
+  }
 
   .specialContent {
     flex-direction: column;
   }
 
   .contactSection {
-    flex-direction: column;
+    flex-direction: column; 
+    align-items: center;
+  } 
+
+  .contactContent {
+    margin: 0 1rem 0;
   }
 
   .footerSection {
     flex-direction: column;  
   } 
 
+  .timeHeader {
+    text-align: center;
+  } 
+
+  .timeTable { 
+    width: 100%;
+  }  
 }

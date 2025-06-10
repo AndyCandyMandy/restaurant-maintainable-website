@@ -1,14 +1,20 @@
 import {Link} from "react-router-dom"; 
 
 import StickyHeader from "../../components/stickyHeader.js"; 
+import NewsSection from "../../components/newsSection.js"; 
 import ReviewSection from "../../components/reviewCarousel.js"; 
 
 import FoodShot_1 from "../../images/food_shot_1.jpg"; 
+import FoodShot_2 from "../../images/food_shot_2.jpg"; 
+import FaceBook from "../../images/socialMedia_Icons/icons-facebook.png"; 
+import Instagram from "../../images/socialMedia_Icons/icons-instagram.png";  
+import Twitter from "../../images/socialMedia_Icons/icons-twitter.png"; 
 
 function homePage() { 
     return (
         <div>
             <section className="introSection"> 
+
                 <div className="introContent"> 
                    <h1 className="introHeader">Jasmine Dragon</h1>
                     <p className="introPhoneHeader">Phone: (<span style={{color: "#f76350"}}>(123) 456-7890</span>)</p> 
@@ -22,45 +28,36 @@ function homePage() {
 
 
             <StickyHeader></StickyHeader>
- 
+            
 
-            <section className="newsSection" id="newsId">
-                <h1 className="newsHeader">Annoucments</h1> 
-
-                <table className="newsContent"> 
-                    <thread>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Headline</th> 
-                    </thread> 
-                    <tbody> 
-
-                        <tr>
-                            <th>June 2nd 2023</th> 
-                            <td>New Item</td> 
-                            <td>New Pork Springrolls!</td>
-                        </tr> 
-                        
-                        <tr>
-                            <th>Dec 24th 2023</th> 
-                            <td>Important</td> 
-                            <td>Closing for Christmas!</td>
-                        </tr>
-                        
-                    </tbody>
-                </table> 
-
-            </section>
-
+            <NewsSection></NewsSection>
+            
 
             <section className="aboutSection" id="aboutId"> 
+
                 <div className="aboutContent">
-                    <h1 className="aboutHeader">About the Jasmine Dragon</h1>
+                    <h1 className="aboutHeader">About the Jasmine Dragon</h1> 
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus. Nam accumsan a ex ac molestie. Nulla vel accumsan tellus. Quisque eget ex urna. Aenean pharetra eget neque et euismod.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus.
+                    </p>  
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non.
                     </p> 
+
+                    <div className="aboutDesc"> 
+                        <p>"Our goal at Jasmin Dragon is to push our customers comfort and satisfaction to the forefront with deliciously fresh food, a bright and welcoming dining area, and ease of access. All of this is to foster a long lasting relationship between the customer and our earnest staff."</p> 
+                        <p style={{fontWeight:"bold"}}>- The <span style={{color:"#f76350", fontWeight:"bold"}}>Owner</span></p>
+                    </div>
+                    
                 </div> 
-                <img className="aboutImage" src={FoodShot_1} alt=""/> 
+
+                <div className="aboutImageBox">
+                    <img className="aboutImage" src={FoodShot_1} alt=""/> 
+                    <img className="aboutImage" src={FoodShot_2} alt=""/>  
+                </div>
+
+                
+            
             </section>  
 
 
@@ -113,7 +110,43 @@ function homePage() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus. Nam accumsan a ex ac molestie. Nulla vel accumsan tellus. Quisque eget ex urna. Aenean pharetra eget neque et euismod.
                     </p>
 
-                </div>
+                    <div className="timeSection">
+                    <h3 className="timeHeader">Operating Hours</h3>  
+                    <ul className="timeTable">
+                        <li className="timeContent">
+                            <span>Monday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Tuesday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Wednesday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Thursday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Friday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Saturday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li>  
+                        <li className="timeContent">
+                            <span>Sunday</span> 
+                            <span>10:00am - 9:30pm</span>
+                        </li> 
+                    </ul>
+                    </div> 
+
+                </div> 
+
+                
 
             </section> 
 
@@ -126,21 +159,15 @@ function homePage() {
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus. Nam accumsan a ex ac molestie. Nulla vel accumsan tellus. Quisque eget ex urna. Aenean pharetra eget neque et euismod.
                     </p>
-                </div>
-
-                <div className="footerContent">
-                    <h3>Hours</h3> 
-                    <p>Monday</p> 
-                    <p>Tuesday</p> 
-                    <p>Wednesday</p> 
-                    <p>Thursday</p> 
-                    <p>Friday</p> 
-                    <p>Saturday</p> 
-                    <p>Sunday</p>
                 </div> 
 
                 <div className="footerContent">
-                    <h3>Social Media</h3>
+                    <h3>Social Media</h3> 
+                    <div className="socialMediaBox">
+                        <img className="socialMediaIcon" src={FaceBook} alt=""/> 
+                        <img className="socialMediaIcon" src={Instagram} alt=""/>  
+                        <img className="socialMediaIcon" src={Twitter} alt=""/> 
+                    </div>
                 </div> 
             </footer>
         </div>

@@ -38,7 +38,7 @@ function StickyHeader() {
     // (Meant to used only on the hamburger button)
     const toggleHamburger = () => { 
         if (headerNotSticky()) { 
-            scrollSectionBtn("newsId");
+            scrollSectionBtn("aboutId");
         } 
         else {
             setIsHeaderContentOpen(prev => !prev);
@@ -53,11 +53,11 @@ function StickyHeader() {
     return (
         <header className="headerSection" id="headerId"> 
                 
-            <p className="headerTitle">Jasmine Dragon</p> 
+            <h2 className="headerTitle">Jasmine Dragon</h2> 
             
             <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
                 <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Home</p> 
-                <p className="headerBtnContent" onClick={() => {scrollSectionBtn("newsId"); turnOffHamburger()}}>News</p> 
+
                 <p className="headerBtnContent" onClick={() => {scrollSectionBtn("aboutId"); turnOffHamburger()}}>About</p> 
                 <p className="headerBtnContent" onClick={() => {scrollSectionBtn("specialId"); turnOffHamburger()}}>Specials</p> 
                 <p className="headerBtnContent" onClick={() => {scrollSectionBtn("contactId"); turnOffHamburger()}}>Contact</p>
