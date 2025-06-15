@@ -283,4 +283,127 @@ body {
   .timeTable { 
     width: 100%;
   }  
+} 
+
+/* CSS Elements intented for the menu page */ 
+.menuHeader {
+  width: 100%;
+  height: clamp(2.25rem, 10vh, 4rem); 
+  z-index: 999;
+  background-color: white;  
+
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuTitleSection { 
+  width: auto;
+  height: 20vh; 
+
+  background-image: url("images/food_spread_3.jpg"); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;  
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
+}
+
+.menuTitleContent {
+  width: 30vw; 
+  height: 10vh;
+
+  background-color: #00000080; 
+  color: white; 
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.menuSearchSection { 
+  margin-top: 1rem; 
+  overflow: hidden;
+
+  flex-direction: row;  
+  align-items: center; 
+  justify-content: center; 
+} 
+
+.menuSearchBar { 
+  width: 100%; 
+
+
+  caret-color: #ff3500;
+} 
+
+.menuSection {
+  background-color: white; 
+
+  margin: 0 5rem 0;
+}
+
+.menuCatagory {
+  margin: 1rem;
+} 
+
+.menuCatagoryHeader { 
+  text-align: center; 
+  border-bottom: 2.5px solid #f76350;
+} 
+
+.menuCatagoryContents {
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: auto auto;
+}  
+
+.menuItem {
+  background-color: cyan;
+}
+
+.itemHeader {
+  margin: 1rem;
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;  
+  justify-content: space-between;
+} 
+
+.itemHeader h3 {
+  margin-bottom: 0;
+}
+
+.itemBody {
+  margin: 1rem;
+  text-align: left;
+} 
+
+@media (max-width: 768px) { 
+  .menuTitleContent {
+    width: 100vw;
+  } 
+
+  .menuSearchBar { 
+    margin: 0 2rem 0;
+  } 
+
+  .menuSection {
+    margin: 0 2rem 0;
+  } 
+
+  .menuCatagoryContents {
+    grid-template-columns: 100%;
+  }  
 }

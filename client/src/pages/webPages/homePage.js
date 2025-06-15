@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom"; 
 
-import StickyHeader from "../../components/stickyHeader.js"; 
-import NewsSection from "../../components/newsSection.js"; 
-import ReviewSection from "../../components/reviewCarousel.js"; 
+import StickyHeader from "../../components/stickyHeader/stickyHeader.js"; 
+import NewsSection from "../../components/newsSection/newsSection.js"; 
+import ReviewSection from "../../components/reviewCarousel/reviewCarousel.js"; 
 
 import FoodShot_1 from "../../images/food_shot_1.jpg"; 
 import FoodShot_2 from "../../images/food_shot_2.jpg"; 

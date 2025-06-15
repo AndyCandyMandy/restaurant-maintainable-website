@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react"; 
-import {Link} from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom"; 
 
 import "./stickyHeader.css"; 
 
-import { scrollSectionBtn, scrollTopBtn } from "../utils/scrollTo.js";
+import { scrollSectionBtn, scrollTopBtn } from "../../utils/scrollTo.js";
 
 function StickyHeader() { 
-    const [isHeaderContentOpen, setIsHeaderContentOpen] = useState(false);
+    const [isHeaderContentOpen, setIsHeaderContentOpen] = useState(false); 
+    const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+    const location = useLocation();
 
     
     useEffect(() => {  
@@ -50,19 +52,34 @@ function StickyHeader() {
         setIsHeaderContentOpen(false);
     }
 
+    const toggleMenuSearch = () => {
+        setIsSearchBarOpen(prev => !prev);
+    }
+
     return (
         <header className="headerSection" id="headerId"> 
                 
-            <h2 className="headerTitle">Jasmine Dragon</h2> 
+            <h2 className="headerTitle">Jasmine Dragon</h2>
             
-            <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
-                <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Home</p> 
+            {location.pathname === "/Home" &&
+                <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
+                    <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Home</p> 
 
-                <p className="headerBtnContent" onClick={() => {scrollSectionBtn("aboutId"); turnOffHamburger()}}>About</p> 
-                <p className="headerBtnContent" onClick={() => {scrollSectionBtn("specialId"); turnOffHamburger()}}>Specials</p> 
-                <p className="headerBtnContent" onClick={() => {scrollSectionBtn("contactId"); turnOffHamburger()}}>Contact</p>
-                <Link className="headerBtnContent" to="/Home/Menu">Menu</Link>
-            </div>
+                    <p className="headerBtnContent" onClick={() => {scrollSectionBtn("aboutId"); turnOffHamburger()}}>About</p> 
+                    <p className="headerBtnContent" onClick={() => {scrollSectionBtn("specialId"); turnOffHamburger()}}>Specials</p> 
+                    <p className="headerBtnContent" onClick={() => {scrollSectionBtn("contactId"); turnOffHamburger()}}>Contact</p>
+                    <Link className="headerBtnContent" to="/Home/Menu">Menu</Link>
+                </div> 
+            } 
+
+            
+            {location.pathname === "/Home/Menu" && 
+                <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
+                    <Link className="headerBtnContent" to="/Home">Home</Link> 
+                    <p className="headerBtnContent" onClick={() => {toggleMenuSearch(); turnOffHamburger()}}>Search</p>
+                </div>
+            }
+
             <p className="headerHamburger" onClick={toggleHamburger}>&equiv;</p> 
         </header>  
     );
