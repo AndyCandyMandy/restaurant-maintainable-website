@@ -194,6 +194,7 @@ body {
 .footerSection {
   width: 100%; 
   padding-top: 5rem;
+  margin-top: 1rem;
 
   background-color: #151515;
   color: white; 
@@ -329,26 +330,11 @@ body {
   justify-content: center; 
 } 
 
-.menuSearchSection { 
-  margin-top: 1rem; 
-  overflow: hidden;
-
-  flex-direction: row;  
-  align-items: center; 
-  justify-content: center; 
-} 
-
-.menuSearchBar { 
-  width: 100%; 
-
-
-  caret-color: #ff3500;
-} 
-
 .menuSection {
   background-color: white; 
 
   margin: 0 5rem 0;
+  padding-bottom: 1rem;
 }
 
 .menuCatagory {
@@ -358,6 +344,7 @@ body {
 .menuCatagoryHeader { 
   text-align: center; 
   border-bottom: 2.5px solid #f76350;
+  padding: 1rem 0 1rem;
 } 
 
 .menuCatagoryContents {
@@ -368,7 +355,7 @@ body {
 }  
 
 .menuItem {
-  background-color: cyan;
+  background-color: white;
 }
 
 .itemHeader {

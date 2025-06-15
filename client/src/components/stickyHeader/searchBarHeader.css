@@ -1,0 +1,27 @@
+.menuHeaderTitle {
+  font-size: clamp(1rem, 1.5vw, 2rem); 
+
+  margin: 1rem;
+}
+
+.menuSearchBar { 
+  display: none;
+
+  width: 50vw; 
+  padding: 7px; 
+  border-radius: 10px;
+
+  caret-color: #ff3500; 
+  background-color: #e3e3e3; 
+  border: 1px solid #e3e3e3;
+} 
+
+.menuSearchBar.active {
+  display: block;
+} 
+
+@media (max-width: 768px) { 
+  .menuHeaderTitle.active {
+    display: none;
+  }
+}
