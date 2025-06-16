@@ -1,0 +1,45 @@
+services:
+  mysql_db: 
+    image: mysql:latest
+    container_name: mysql_container 
+    restart: always
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./server:/usr/lib/mysql 
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    healthcheck: 
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+  nodejs: 
+    build: ./server
+    container_name: nodejs_container 
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/usr/src/app
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    environment: 
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    stdin_open: true
+    tty: true
+
+  react: 
+    build: ./client 
+    container_name: react_container
+    restart: always
+    ports:
+      - "3000:3000"  
+    depends_on:
+      - nodejs 
