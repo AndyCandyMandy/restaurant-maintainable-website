@@ -1,0 +1,72 @@
+.adminTitleSection {
+  width: auto;
+  height: 20vh; 
+
+  background-image: url("../../images/food_spread_1.jpg"); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;  
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+} 
+
+.adminTitleContent {
+  width: 30vw; 
+  height: 10vh;
+
+  background-color: #00000080; 
+  color: white; 
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
+} 
+
+.adminNewsSection, .adminMenuSection, .adminMenuEditSection { 
+  background-color: white;
+
+  margin: 1rem 2rem 1rem;
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+} 
+
+.adminMenuContent {
+  width: 50vw; 
+
+  display: flex;
+  flex-direction: column;  
+  align-items: start;
+  justify-content: center;
+}
+
+.menuNamePriceSection { 
+  width: 100%; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;  
+  justify-content: space-between;
+} 
+
+.menuItemDescInput {
+  width: 100%; 
+  height: 5rem; 
+
+  resize: none;
+}
+
+@media (max-width: 768px) { 
+  .adminTitleContent {
+    width: 100vw;
+  } 
+
+}

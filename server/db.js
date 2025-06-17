@@ -35,7 +35,7 @@ con.connect(err => {
     con.query(sqlUsers, async function (err, result) {
         if (err) {
             throw err;
-        } 
+        };
         console.log(" 'sqlUsers' table created");  
 
         // Hardcoded admin account, "AdminRockz". Would only make the account if the table never existed. 
@@ -49,10 +49,21 @@ con.connect(err => {
         });
     });  
 
+    // Creates the menuCategory table
+    const sqlCategory = "CREATE TABLE IF NOT EXISTS menuCategory (id INT AUTO_INCREMENT PRIMARY KEY, itemCategory VARCHAR(255))"; 
+    con.query(sqlItem, function (err, result) {
+        if (err) {
+            throw err; 
+        };
+        console.log(" 'menuCategory' table created");
+    });
+
     // Creates the menuItems table
     const sqlItem = "CREATE TABLE IF NOT EXISTS menuItems (id INT AUTO_INCREMENT PRIMARY KEY, itemName VARCHAR(255), itemDesc VARCHAR(255), itemCategory VARCHAR(255), itemStatus BOOLEAN DEFAULT true, itemPrice DECIMAL(10, 2))";
     con.query(sqlItem, function (err, result) {
-        if (err) throw err;
+        if (err) {
+            throw err; 
+        };
         console.log(" 'menuItems' table created");
     });
 

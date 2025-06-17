@@ -71,7 +71,8 @@ function StickyHeader() {
                     <p className="headerBtnContent" onClick={() => {scrollSectionBtn("aboutId"); turnOffHamburger()}}>About</p> 
                     <p className="headerBtnContent" onClick={() => {scrollSectionBtn("specialId"); turnOffHamburger()}}>Specials</p> 
                     <p className="headerBtnContent" onClick={() => {scrollSectionBtn("contactId"); turnOffHamburger()}}>Contact</p>
-                    <Link className="headerBtnContent" to="/Home/Menu">Menu</Link>
+                    <Link className="headerBtnContent" to="/Home/Menu">Menu</Link> 
+                    <Link className="headerBtnContent" to="/Admin">Admin</Link>
                 </div> 
             } 
 
@@ -83,8 +84,9 @@ function StickyHeader() {
             }
             {location.pathname === "/Home/Menu" && 
                 <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
-                    <Link className="headerBtnContent" to="/Home">Home</Link> 
                     <p className="headerBtnContent" onClick={() => {toggleMenuSearch(); turnOffHamburger()}}>Search</p>
+                    <Link className="headerBtnContent" to="/Home">Home</Link> 
+                    <Link className="headerBtnContent" to="/Admin">Admin</Link>
                 </div>
             }
 
