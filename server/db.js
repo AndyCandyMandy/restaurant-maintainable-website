@@ -49,13 +49,13 @@ con.connect(err => {
         });
     });  
 
-    // Creates the menuCategory table
-    const sqlCategory = "CREATE TABLE IF NOT EXISTS menuCategory (id INT AUTO_INCREMENT PRIMARY KEY, itemCategory VARCHAR(255))"; 
-    con.query(sqlItem, function (err, result) {
+    // Creates the menuCategories table
+    const sqlCategory = "CREATE TABLE IF NOT EXISTS menuCategories (id INT AUTO_INCREMENT PRIMARY KEY, categoryName VARCHAR(255))"; 
+    con.query(sqlCategory, function (err, result) {
         if (err) {
             throw err; 
         };
-        console.log(" 'menuCategory' table created");
+        console.log(" 'menuCategories' table created");
     });
 
     // Creates the menuItems table

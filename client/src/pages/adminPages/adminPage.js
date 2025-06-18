@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom"; 
 
+import AdminCategory from "../../components/adminComponents/adminCategory.js"; 
+
 import "./adminPage.css"; 
 
-function adminPage() { 
+function AdminPage() { 
+
+
 
     return ( 
         <div> 
@@ -14,25 +18,24 @@ function adminPage() {
 
 
             <section className="adminNewsSection"> 
-                <h1>Annoucement Setting</h1>
+                <h1>Annoucement Setting</h1> 
 
+                <input type="text" placeholder="Annoucement is currently empty..." ></input>
+                <button>Post</button>
             </section> 
 
 
             <section className="adminMenuSection"> 
                 <h1>Menu Customization</h1>
                 
-                <div className="adminMenuContent">
-                    <h3>Menu Catagory</h3> 
-                    <input type="text" placeholder="Input menu catagory..."></input>
-                </div>
-                
+                <AdminCategory></AdminCategory>
+
                 <form className="adminMenuContent">
                     <h3>Add menu item:</h3> 
 
                     <div className="menuNamePriceSection"> 
                         <div> 
-                            <select>
+                            <select defaultValue="">
                                 <option value="" disabled selected>Select an item catagory...</option>
                             </select>
                             <input type="text" placeholder="Input item name..."></input> 
@@ -56,4 +59,4 @@ function adminPage() {
     );
 } 
 
-export default adminPage;
+export default AdminPage;
