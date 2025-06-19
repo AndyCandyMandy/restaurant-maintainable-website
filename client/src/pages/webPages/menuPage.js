@@ -1,13 +1,15 @@
 import StickyHeader from "../../components/stickyHeader/stickyHeader.js"; 
 
 import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
+import { useUpdateMenuItems } from "../../hooks/useUpdateMenuItems.js"; 
 
 import FaceBook from "../../images/socialMedia_Icons/icons-facebook.png"; 
 import Instagram from "../../images/socialMedia_Icons/icons-instagram.png";  
 import Twitter from "../../images/socialMedia_Icons/icons-twitter.png";
 
 function MenuPage() { 
-    const { categories } = useUpdateCategories();
+    const { categories } = useUpdateCategories(); 
+    const { menuItems } = useUpdateMenuItems();
 
     return (
         <div> 
@@ -73,7 +75,17 @@ function MenuPage() {
 
                         <div className="menuCatagoryContents">
 
-
+                            {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName).map((menuItemData) => (  
+                                <div className="menuItem"> 
+                                    <div className="itemHeader">
+                                        <h3><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
+                                        <h3><span>$</span>{menuItemData.itemPrice}</h3>
+                                    </div>  
+                                    <div className="itemBody">
+                                        <p>{menuItemData.itemDesc}</p>
+                                    </div>
+                                </div>
+                            ))}
 
                         </div>
                     </section>

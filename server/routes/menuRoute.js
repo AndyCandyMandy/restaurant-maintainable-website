@@ -25,12 +25,12 @@ app.post("/addMenuCategory", async (req, res) => {
 
 
 app.post("/addMenuItem", async (req, res) => { 
-    const { itemName, itemDesc, itemCategory, itemPrice } = req.body; 
-    let itemStatus = true;
+    const {  menuItemCategory, menuItemName, menuItemPrice, menuItemDesc } = req.body; 
+    let menuItemStatus = true;
 
     try { 
       let table = "INSERT INTO menuItems (itemName, itemDesc, itemCategory, itemStatus, itemPrice) VALUES (?, ?, ?, ?, ?)"; 
-      con.query(table, [itemName, itemDesc, itemCategory, itemStatus, itemPrice], function (err, result) {
+      con.query(table, [menuItemName, menuItemDesc, menuItemCategory, menuItemStatus, menuItemPrice], function (err, result) {
             if (err) {
                 console.error("Failed to insert menu item:", err);
                 return res.status(500).json({ success: false, error: "Database error" });
@@ -47,6 +47,17 @@ app.post("/addMenuItem", async (req, res) => {
 
 app.get("/allCategoryData", (req, res) => {
   con.query("SELECT * FROM menuCategories", function (err, result) {
+    if (err) {
+      console.error("Database query failed:", err);
+      return res.status(500).json({ success: false, error: err.message });
+    }
+    return res.json({ success: true, data: result });
+  });
+}); 
+
+
+app.get("/allMenuItemData", (req, res) => {
+  con.query("SELECT * FROM menuItems", function (err, result) {
     if (err) {
       console.error("Database query failed:", err);
       return res.status(500).json({ success: false, error: err.message });

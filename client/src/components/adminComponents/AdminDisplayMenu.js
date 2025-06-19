@@ -1,6 +1,6 @@
 
 
-function AdminDisplayMenu({ categories }) { 
+function AdminDisplayMenu({ categories, menuItems }) { 
 
 
     return ( 
@@ -8,12 +8,17 @@ function AdminDisplayMenu({ categories }) {
             <h1>Edit Menu</h1>
 
             <div>
-                {categories.map((categoryData, index) => (
-                    <div key={index}>
+                {categories.map((categoryData) => (
+                    <div key={categoryData.id}>
                         <h3>{categoryData.categoryName}</h3>
 
-                        <div>
-                            
+                        <div> 
+                            {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName).map((menuItemData) => ( 
+                                <div key={menuItemData.id}>
+                                    <p>{menuItemData.itemName}</p> 
+                                </div>
+                                
+                            ))}
                         </div>
                     </div>    
                 ))}
