@@ -1,9 +1,7 @@
-import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
-
 import "./AdminMenuItem.css"; 
 
-function AdminMenuItem() { 
-    const { categories } = useUpdateCategories();
+function AdminMenuItem({ categories }) { 
+
 
     return ( 
         <form className="adminMenuContent">
@@ -25,6 +23,7 @@ function AdminMenuItem() {
 
                 <p>$<input type="text" placeholder="Input item price..."></input></p>
             </div>
+            
             <textarea className="menuItemDescInput" placeholder="Input item description..."></textarea> 
             <button>Submit</button>
         </form>   

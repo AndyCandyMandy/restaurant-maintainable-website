@@ -1,12 +1,9 @@
 import { useState } from "react"; 
 
-import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
-
 import "./AdminCategory.css"; 
 
-function AdminCategory() { 
+function AdminCategory({ categories, updateCategory, error }) { 
     const [categoryInsertValue, setCategoryInsertValue] = useState(""); 
-    const { categories, updateCategory, error } = useUpdateCategories();
 
 
     const submitCategory = async (e) => { 

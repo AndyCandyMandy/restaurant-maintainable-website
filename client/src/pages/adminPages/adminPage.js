@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom"; 
 
+import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
+
 import AdminCategory from "../../components/adminComponents/AdminCategory.js"; 
 import AdminMenuItem from "../../components/adminComponents/AdminMenuItem.js"; 
+import AdminDisplayMenu from "../../components/adminComponents/AdminDisplayMenu.js"; 
 
 import "./adminPage.css"; 
 
 function AdminPage() {  
-
+    const { categories, updateCategory, error } = useUpdateCategories();
 
     return ( 
         <div> 
@@ -28,14 +31,15 @@ function AdminPage() {
             <section className="adminMenuSection"> 
                 <h1>Menu Customization</h1>
                 
-                <AdminCategory></AdminCategory> 
+                <AdminCategory categories={categories} updateCategory={updateCategory} error={error}></AdminCategory> 
 
-                <AdminMenuItem></AdminMenuItem>
+                <AdminMenuItem categories={categories}></AdminMenuItem>
 
             </section>
             
+
             <section className="adminMenuEditSection"> 
-                <h1>Edit Menu</h1>
+                <AdminDisplayMenu categories={categories}></AdminDisplayMenu>
 
             </section>
 

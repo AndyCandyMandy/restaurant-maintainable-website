@@ -8,18 +8,39 @@ app.post("/addMenuCategory", async (req, res) => {
     const categoryName = req.body.categoryInsertValue;;
 
     try {
-        var table = "INSERT INTO menuCategories (categoryName) VALUES (?)"; 
+        let table = "INSERT INTO menuCategories (categoryName) VALUES (?)"; 
         con.query(table, [categoryName], function (err, result) {
             if (err) {
                 console.error("Failed to insert catagory:", err);
                 return res.status(500).json({ success: false, error: "Database error" });
             }
 
-            var categoryID = result.insertId; 
+            let categoryID = result.insertId; 
             return res.json({ success: true, id: categoryID });;
         });
     } catch (error) {
         return res.status(500).json({ success: false, error: "Error from inserting category!" });
+    }
+}); 
+
+
+app.post("/addMenuItem", async (req, res) => { 
+    const { itemName, itemDesc, itemCategory, itemPrice } = req.body; 
+    let itemStatus = true;
+
+    try { 
+      let table = "INSERT INTO menuItems (itemName, itemDesc, itemCategory, itemStatus, itemPrice) VALUES (?, ?, ?, ?, ?)"; 
+      con.query(table, [itemName, itemDesc, itemCategory, itemStatus, itemPrice], function (err, result) {
+            if (err) {
+                console.error("Failed to insert menu item:", err);
+                return res.status(500).json({ success: false, error: "Database error" });
+            }
+
+            let menuID = result.insertId; 
+            return res.json({ success: true, id: menuID });;
+        }); 
+    } catch (error) {
+      return res.status(500).json({ success: false, error: "Error from inserting menu item!" });
     }
 });
 
