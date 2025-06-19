@@ -1,10 +1,14 @@
 import StickyHeader from "../../components/stickyHeader/stickyHeader.js"; 
 
+import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
+
 import FaceBook from "../../images/socialMedia_Icons/icons-facebook.png"; 
 import Instagram from "../../images/socialMedia_Icons/icons-instagram.png";  
 import Twitter from "../../images/socialMedia_Icons/icons-twitter.png";
 
-function menuPage() {
+function MenuPage() { 
+    const { categories } = useUpdateCategories();
+
     return (
         <div> 
             <StickyHeader></StickyHeader> 
@@ -61,7 +65,19 @@ function menuPage() {
                         </div>
 
                     </div>
-                </section>
+                </section> 
+
+                {categories.map((categoryData) => (
+                    <section className="menuCatagory" key={categoryData.id}> 
+                        <h2 className="menuCatagoryHeader">{categoryData.categoryName}</h2> 
+
+                        <div className="menuCatagoryContents">
+
+
+
+                        </div>
+                    </section>
+                ))}
 
                  
             </main> 
@@ -89,4 +105,4 @@ function menuPage() {
     );
 } 
 
-export default menuPage;
+export default MenuPage;

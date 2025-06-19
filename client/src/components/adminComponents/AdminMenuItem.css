@@ -1,0 +1,16 @@
+.menuNamePriceSection { 
+  width: 100%; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;  
+  justify-content: space-between;
+} 
+
+.menuItemDescInput {
+  width: 100%; 
+  height: 5rem; 
+
+  resize: none;
+}

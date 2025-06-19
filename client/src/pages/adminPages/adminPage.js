@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"; 
 
-import AdminCategory from "../../components/adminComponents/adminCategory.js"; 
+import AdminCategory from "../../components/adminComponents/AdminCategory.js"; 
+import AdminMenuItem from "../../components/adminComponents/AdminMenuItem.js"; 
 
 import "./adminPage.css"; 
 
-function AdminPage() { 
-
+function AdminPage() {  
 
 
     return ( 
@@ -28,25 +28,10 @@ function AdminPage() {
             <section className="adminMenuSection"> 
                 <h1>Menu Customization</h1>
                 
-                <AdminCategory></AdminCategory>
+                <AdminCategory></AdminCategory> 
 
-                <form className="adminMenuContent">
-                    <h3>Add menu item:</h3> 
+                <AdminMenuItem></AdminMenuItem>
 
-                    <div className="menuNamePriceSection"> 
-                        <div> 
-                            <select defaultValue="">
-                                <option value="" disabled selected>Select an item catagory...</option>
-                            </select>
-                            <input type="text" placeholder="Input item name..."></input> 
-                        </div>
-                        
-
-                        <p>$<input type="text" placeholder="Input item price..."></input></p>
-                    </div>
-                    <textarea className="menuItemDescInput" placeholder="Input item description..."></textarea> 
-                    <button>Submit</button>
-                </form>
             </section>
             
             <section className="adminMenuEditSection"> 
@@ -55,6 +40,7 @@ function AdminPage() {
             </section>
 
             <Link to="/Home">Home</Link> 
+            <Link to="/Home/Menu">Menu</Link> 
         </div>
     );
 } 

@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react"; 
+
+import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
+
+import "./AdminCategory.css"; 
 
 function AdminCategory() { 
     const [categoryInsertValue, setCategoryInsertValue] = useState(""); 
-    const [categoryValue, setCategoryValue] = useState([]);
+    const { categories, updateCategory, error } = useUpdateCategories();
 
-
-    useEffect(() => {
-        
-        updateCategory();
-        
-    }, []);
-
-    const updateCategory = async () => {
-        try {
-        const response = await fetch("http://localhost:5000/api/auth/allCategoryData");
-
-        const data = await response.json();
-
-        if (data.success) {
-            setCategoryValue(data.data);
-        }
-        } catch (error) {
-            console.error("Error fetching categories: ", error);
-        }
-    };
 
     const submitCategory = async (e) => { 
         e.preventDefault(); 
@@ -57,13 +41,22 @@ function AdminCategory() {
             <form onSubmit={submitCategory}>
                 <input type="text" placeholder="Input menu category..." onChange={(e) => setCategoryInsertValue(e.target.value)} required></input> 
                 <button type="submit">Submit</button>
-            </form> 
+            </form>  
 
-            <ul>
-                {categoryValue.map((categoryData, index) => (
-                    <li key={index}>{categoryData.id} {categoryData.categoryName}</li>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+
+            <div>
+                {categories.map((categoryData, index) => (
+                    <div className="categoryItem">
+                        <p key={index}>{categoryData.id}. {categoryData.categoryName} </p> 
+
+                        <div>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                    </div>    
                 ))}
-            </ul>
+            </div>
             
         </div>
     );
