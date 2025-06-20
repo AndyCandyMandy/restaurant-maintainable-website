@@ -1,3 +1,4 @@
+import { useState } from "react";
 import StickyHeader from "../../components/stickyHeader/stickyHeader.js"; 
 
 import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
@@ -7,7 +8,9 @@ import FaceBook from "../../images/socialMedia_Icons/icons-facebook.png";
 import Instagram from "../../images/socialMedia_Icons/icons-instagram.png";  
 import Twitter from "../../images/socialMedia_Icons/icons-twitter.png";
 
-function MenuPage() { 
+function MenuPage() {  
+    const [searchBarContent, setSearchBarContent] = useState("");
+
     const { categories } = useUpdateCategories(); 
     const { menuItems } = useUpdateMenuItems();
 
@@ -21,10 +24,14 @@ function MenuPage() {
                     <h1>Our Menu</h1>
                 </div>
             </section>
-    
             
+            <section className="menuSearchBarSection">
+                <input className="menuSearchBar" type="text" placeholder="Search menu for..." value={searchBarContent} onChange={(e) => setSearchBarContent(e.target.value)}></input>
+            </section>
+
             <main className="menuSection"> 
 
+                {/*
                 <section className="menuCatagory">
                     <h2 className="menuCatagoryHeader">Appetizers</h2>
 
@@ -68,14 +75,28 @@ function MenuPage() {
 
                     </div>
                 </section> 
+                */} 
 
-                {categories.map((categoryData) => (
+                
+                {categories.length === 0 ? (
+                    <section className="emptyMenuCategory">
+                        <h2>Our menu is currently unavailable...</h2>
+                        <p>Apologies for any future inconvienances</p>
+                    </section>
+                ) : (
+                categories.map((categoryData) => (
                     <section className="menuCatagory" key={categoryData.id}> 
                         <h2 className="menuCatagoryHeader">{categoryData.categoryName}</h2> 
 
                         <div className="menuCatagoryContents">
 
-                            {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName).map((menuItemData) => (  
+
+                            {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName && 
+                            (
+                                menuItem.itemName.toLowerCase().includes(searchBarContent.toLowerCase()) || 
+                                menuItem.itemDesc.toLowerCase().includes(searchBarContent.toLowerCase())
+                            )
+                            ).map((menuItemData) => (  
                                 <div className="menuItem"> 
                                     <div className="itemHeader">
                                         <h3><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
@@ -87,11 +108,11 @@ function MenuPage() {
                                 </div>
                             ))}
 
+
                         </div>
                     </section>
-                ))}
-
-                 
+                )))}
+ 
             </main> 
 
 

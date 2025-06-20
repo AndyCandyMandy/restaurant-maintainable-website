@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"; 
 
 import "./stickyHeader.css"; 
-import "./searchBarHeader.css"; 
 
 import { scrollSectionBtn, scrollTopBtn } from "../../utils/scrollTo.js";
 
 function StickyHeader() { 
     const [isHeaderContentOpen, setIsHeaderContentOpen] = useState(false); 
-    const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
     const location = useLocation();
 
-    
     useEffect(() => {  
         // Function closes the hamburger menu when the header is no longer attached/sticky
         // (Closes the hamburger menu when the viewport deteches the header)
@@ -53,17 +50,11 @@ function StickyHeader() {
         setIsHeaderContentOpen(false);
     }
 
-    // Function toggles between the search bar states.
-    const toggleMenuSearch = () => {
-        setIsSearchBarOpen(prev => !prev);
-    }
-
     return (
         <header className="headerSection" id="headerId"> 
                 
-            {location.pathname === "/Home" && 
-                <h2 className="headerTitle">Jasmine Dragon</h2>
-            }
+            <h2 className="headerTitle">Jasmine Dragon</h2>
+            
             {location.pathname === "/Home" &&
                 <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
                     <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Home</p> 
@@ -77,14 +68,9 @@ function StickyHeader() {
             } 
 
             {location.pathname === "/Home/Menu" && 
-                <>
-                    <h2 className={`menuHeaderTitle ${isSearchBarOpen ? "active" : ""}`}>Jasmine Dragon</h2>
-                    <input className={`menuSearchBar ${isSearchBarOpen ? "active" : ""}`} type="text" placeholder="Search menu for..."></input>
-                </>
-            }
-            {location.pathname === "/Home/Menu" && 
                 <div className={`headerContent ${isHeaderContentOpen ? "active" : ""}`}> 
-                    <p className="headerBtnContent" onClick={() => {toggleMenuSearch(); turnOffHamburger()}}>Search</p>
+                    <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Search</p> 
+                    
                     <Link className="headerBtnContent" to="/Home">Home</Link> 
                     <Link className="headerBtnContent" to="/Admin">Admin</Link>
                 </div>
