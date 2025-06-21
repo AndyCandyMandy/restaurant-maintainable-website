@@ -49,6 +49,15 @@ con.connect(err => {
         });
     });  
 
+    // Creates the newsContent table
+    const sqlNews = "CREATE TABLE IF NOT EXISTS newsContent (id INT AUTO_INCREMENT PRIMARY KEY, newsText VARCHAR(255), lastUsed DATETIME DEFAULT CURRENT_TIMESTAMP)"; 
+    con.query(sqlNews, function (err, result) {
+        if (err) {
+            throw err; 
+        };
+        console.log(" 'newsContent' table created");
+    });
+
     // Creates the menuCategories table
     const sqlCategory = "CREATE TABLE IF NOT EXISTS menuCategories (id INT AUTO_INCREMENT PRIMARY KEY, categoryName VARCHAR(255))"; 
     con.query(sqlCategory, function (err, result) {

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"; 
 
+import { useUpdateNews } from "../../hooks/useUpdateNews.js"; 
 import { useUpdateCategories } from "../../hooks/useUpdateCategories.js"; 
 import { useUpdateMenuItems } from "../../hooks/useUpdateMenuItems.js"; 
 
+import AdminNews from "../../components/adminComponents/AdminNews.js"; 
 import AdminCategory from "../../components/adminComponents/AdminCategory.js"; 
 import AdminMenuItem from "../../components/adminComponents/AdminMenuItem.js"; 
 import AdminDisplayMenu from "../../components/adminComponents/AdminDisplayMenu.js"; 
@@ -10,6 +12,7 @@ import AdminDisplayMenu from "../../components/adminComponents/AdminDisplayMenu.
 import "./adminPage.css"; 
 
 function AdminPage() {  
+    const { news, updateNews, errorNews } = useUpdateNews(); 
     const { categories, updateCategory, errorCategory } = useUpdateCategories(); 
     const { menuItems, updateMenuItem, errorMenuItem } = useUpdateMenuItems();
 
@@ -23,10 +26,7 @@ function AdminPage() {
 
 
             <section className="adminNewsSection"> 
-                <h1>Annoucement Setting</h1> 
-
-                <input type="text" placeholder="Annoucement is currently empty..." ></input>
-                <button>Post</button>
+                <AdminNews news={news} updateNews={updateNews} error={errorNews}></AdminNews>
             </section> 
 
 
