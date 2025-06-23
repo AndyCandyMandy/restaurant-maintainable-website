@@ -410,6 +410,17 @@ body {
   text-align: left;
 } 
 
+.missingItemHeader {
+  color: #a1a1a1; 
+  text-decoration: line-through; 
+  text-decoration-color: red; 
+  text-decoration-thickness: 2px;
+} 
+
+.missingItemBody {
+  color: #a1a1a1;
+}
+
 @media (max-width: 768px) { 
   .menuTitleContent {
     width: 100vw;

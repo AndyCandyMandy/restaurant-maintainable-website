@@ -1,0 +1,16 @@
+.itemViewHeader {
+  width: 100%; 
+
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;  
+  justify-content: space-between;
+} 
+
+.itemViewDesc {
+  width: 50vw; 
+  height: 5rem; 
+
+  resize: none;
+}

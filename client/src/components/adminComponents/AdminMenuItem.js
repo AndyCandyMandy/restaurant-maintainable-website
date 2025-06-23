@@ -51,7 +51,7 @@ function AdminMenuItem({ categories, updateMenuItem, error }) {
                 </div>
                 
 
-                <p>$<input type="text" placeholder="Input item price..." onChange={(e) => setMenuItemPrice(e.target.value)} required></input></p>
+                <p>$<input type="number" placeholder="Input item price..." onChange={(e) => setMenuItemPrice(e.target.value)} required></input></p>
             </div>
             
             <textarea className="menuItemDescInput" placeholder="Input item description..." onChange={(e) => setMenuItemDesc(e.target.value)} required></textarea> 

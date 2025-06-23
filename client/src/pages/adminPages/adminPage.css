@@ -29,8 +29,9 @@
 
 .adminNewsSection, .adminMenuSection, .adminMenuEditSection { 
   background-color: white;
-
   margin: 1rem 2rem 1rem;
+
+  text-align: center;
 
   display: flex;
   flex-direction: column;  

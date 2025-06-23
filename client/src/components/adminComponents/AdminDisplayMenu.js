@@ -26,36 +26,10 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
     };
 
     return ( 
-        <> 
+        <div> 
             <h1>Edit Menu</h1>
 
-            <div> 
-
-
-                {/* 
-                <div>
-                    <h3>Drinks</h3> 
-                    <div>
-                        <div>
-                            <form> 
-                                 
-                                <p>1. <input type="text" placeholder="Juice"></input></p> 
-                                <p>$<input type="text" placeholder="2.95" value="2.95"></input></p> 
-
-                                <textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non.</textarea>
-                                
-                                <button>Submit Edit</button> 
-                                <button>Delete</button>
-                            </form>
-                            
-
-                            <p>Item availability: True</p>
-                            <button>Toggle Status</button>
-                        </div>
-                    </div>
-                </div>
-*/}
-
+            <div className="adminMenuContent"> 
 
 
                 {categories.map((categoryData) => (
@@ -66,12 +40,20 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
 
                             {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName).map((menuItemData) => ( 
                                 <div key={menuItemData.id}>
-                                    <p>{menuItemData.id}. {menuItemData.itemName}</p>  
-                                    <p>${menuItemData.itemPrice}</p> 
-                                    <p>{menuItemData.itemDesc}</p> 
 
+                                    <form>
+                                        <div className="itemViewHeader">  
+                                            <p>{menuItemData.id}. <input type="text" defaultValue={menuItemData.itemName}></input></p>
+                                            <p>$<input type="number" step="0.01" defaultValue={menuItemData.itemPrice}></input></p>
+                                        </div> 
 
-                                    <p>Item availability: <button onClick={() => ToggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus}</button></p> 
+                                        <textarea className="itemViewDesc">{menuItemData.itemDesc}</textarea>
+
+                                        <button>Submit Edit</button> 
+                                        <button>Delete Item</button>
+                                    </form>
+                                    
+                                    <p>Item availability: <button onClick={() => ToggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus ? "Available" : "Unavailable"}</button></p> 
                                     
                                 </div>
                                 
@@ -83,7 +65,7 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
                 ))}
             </div>
 
-        </>  
+        </div>  
     );
 } 
 
