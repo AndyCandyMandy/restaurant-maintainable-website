@@ -45,6 +45,31 @@ app.post("/addMenuItem", async (req, res) => {
 });
 
 
+app.patch("/toggleMenuItemStatus", async (req, res) => { 
+  const { id } = req.body;
+  if (!id) {
+    return res.status(400).json({ success: false, error: "Missing menu item ID" });
+  }
+
+  try {
+    const table = "UPDATE menuItems SET itemStatus = NOT itemStatus WHERE id = ?";
+    con.query(table, [id], (err, result) => {
+        if (err) {
+            return res.status(500).json({ success: false, error: "Database error from toggling menu item status" });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ success: false, error: "Menu item not found" });
+        }
+
+        return res.json({ success: true, message: "Menu status toggled successfully" });
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: "Error from updating menu status!" });
+  }
+});
+
+
 app.get("/allCategoryData", (req, res) => {
   con.query("SELECT * FROM menuCategories", function (err, result) {
     if (err) {

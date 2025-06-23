@@ -40,11 +40,10 @@ function AdminNews({ news, updateNews, error }) {
         
         {error && <p style={{ color: "red" }}>{error}</p>}
 
-        {news.length > 0 && (
-            <p>Currently displayed announcement: {news[0].newsText}</p>
-        )}
         
-            
+        <p>Currently displayed announcement: {news.length > 0 && (news[0].newsText)}</p>
+        <button>Clear Post</button>
+        
             
         </>
     );

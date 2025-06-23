@@ -41,7 +41,7 @@ function AdminPage() {
             
 
             <section className="adminMenuEditSection"> 
-                <AdminDisplayMenu categories={categories} menuItems={menuItems}></AdminDisplayMenu>
+                <AdminDisplayMenu categories={categories} menuItems={menuItems} updateMenuItem={updateMenuItem}></AdminDisplayMenu>
 
             </section>
 
