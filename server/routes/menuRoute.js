@@ -4,20 +4,35 @@ const express = require("express");
 const app = express.Router();
 const con = require("../db"); 
 
+
 app.post("/addMenuCategory", async (req, res) => { 
-    const categoryName = req.body.categoryInsertValue;;
+    const categoryName = req.body.categoryInsertValue;
 
     try {
+      let checkTable = "SELECT * FROM menuCategories WHERE categoryName = ?";
+      con.query(checkTable, [categoryName], (checkErr, checkResult) => { 
+        if (checkErr) {
+          console.error("Error checking category:", checkErr);
+          return res.status(500).json({ success: false, error: "Database error during category check" });
+        }
+
+        if (checkResult.length > 0) {
+          return res.status(409).json({ success: false, error: "Category already exists" });
+        }
+
+
         let table = "INSERT INTO menuCategories (categoryName) VALUES (?)"; 
         con.query(table, [categoryName], function (err, result) {
-            if (err) {
-                console.error("Failed to insert catagory:", err);
-                return res.status(500).json({ success: false, error: "Database error" });
-            }
+          if (err) {
+              console.error("Failed to insert catagory:", err);
+              return res.status(500).json({ success: false, error: "Database error" });
+          }
 
-            let categoryID = result.insertId; 
-            return res.json({ success: true, id: categoryID });;
+          let categoryID = result.insertId; 
+          return res.json({ success: true, id: categoryID });
         });
+      });
+
     } catch (error) {
         return res.status(500).json({ success: false, error: "Error from inserting category!" });
     }
@@ -45,8 +60,8 @@ app.post("/addMenuItem", async (req, res) => {
 });
 
 
-app.patch("/toggleMenuItemStatus", async (req, res) => { 
-  const { id } = req.body;
+app.patch("/toggleMenuItemStatus/:id", async (req, res) => { 
+  const { id } = req.params;
   if (!id) {
     return res.status(400).json({ success: false, error: "Missing menu item ID" });
   }
@@ -91,5 +106,54 @@ app.get("/allMenuItemData", (req, res) => {
   });
 });
 
+
+app.delete("/deleteCategory/:id", (req, res) => { 
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).json({ success: false, error: "Category ID is required" });
+  } 
+
+  con.query("SELECT categoryName FROM menuCategories WHERE id = ?", [id], (err, result) => { 
+    if (err || result.length === 0) {
+      return res.status(404).json({ success: false, error: "Category not found" });
+    }
+
+    const categoryName = result[0].categoryName;
+
+    con.query("DELETE FROM menuItems WHERE itemCategory = ?", [categoryName], (deleteMenuItemErr) => { 
+      if (deleteMenuItemErr) {
+        return res.status(500).json({ success: false, error: "Failed to delete menu items from the category" });
+      } 
+
+
+      con.query("DELETE FROM menuCategories WHERE id = ?", [id], (deleteCategoryErr) => { 
+        if (deleteCategoryErr) {
+          return res.status(500).json({ success: false, error: "Failed to delete category" });
+        }
+
+        return res.json({ success: true, message: "Category and its menu items deleted successfully" });
+      }); 
+
+    }); 
+
+  }); 
+
+});
+
+
+app.delete("/deleteMenuItem/:id", (req, res) => { 
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).json({ success: false, error: "Menu item ID is required" });
+  } 
+
+  con.query("DELETE FROM menuItems WHERE id = ?", [id], (err, result) => {
+    if (err) {
+      console.error("Error deleting menu item:", err);
+      return res.status(500).json({ success: false, error: "Database error when deleting menu item" });
+    }
+    return res.json({ success: true, message: "Menu item deleted successfully!" });
+  });
+});
 
 module.exports = app;

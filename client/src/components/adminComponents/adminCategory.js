@@ -5,7 +5,6 @@ import "./AdminCategory.css";
 function AdminCategory({ categories, updateCategory, error }) { 
     const [categoryInsertValue, setCategoryInsertValue] = useState(""); 
 
-
     const submitCategory = async (e) => { 
         e.preventDefault(); 
 
@@ -31,6 +30,27 @@ function AdminCategory({ categories, updateCategory, error }) {
         }
     };
 
+
+    const deleteCategory = async (id) => { 
+        try { 
+             const response = await fetch(`http://localhost:5000/api/auth/deleteCategory/${id}`, {
+                method: "DELETE"
+            });
+            const result = await response.json();
+
+            if (response.ok) {
+                console.log("Deleting menu category was successful."); 
+                updateCategory();
+            }
+            else {
+                console.log("Failed submitting menu category id", result.error);
+            }
+        } catch (error) {
+            console.error("Failed to delete menu category from menu:", error);
+        }
+    };
+
+
     return ( 
         <div className="adminMenuContent">
             <h3>Menu Category</h3> 
@@ -49,7 +69,7 @@ function AdminCategory({ categories, updateCategory, error }) {
 
                         <div>
                             <button>Edit</button>
-                            <button>Delete</button>
+                            <button onClick={() => deleteCategory(categoryData.id)}>Delete</button>
                         </div>
                     </div>    
                 ))}

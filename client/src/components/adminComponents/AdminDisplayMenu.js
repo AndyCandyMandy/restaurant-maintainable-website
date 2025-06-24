@@ -2,14 +2,29 @@ import "./AdminDisplayMenu.css";
 
 function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) { 
 
-    const ToggleMenuItemStatus = async (id) => {
-        const menuItemId = { id }; 
+    const deleteMenuItem = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/auth/deleteMenuItem/${id}`, {
+                method: "DELETE"
+            }); 
+            const result = await response.json(); 
 
+            if (response.ok) {
+                console.log("Submitting menu item id was successful."); 
+                updateMenuItem();
+            }
+            else {
+                console.log("Failed submitting menu item id", result.error);
+            }
+        } catch (error) {
+             console.error("Failed to delete menu item:", error);
+        }
+    };
+
+    const toggleMenuItemStatus = async (id) => {
         try { 
-             const response = await fetch("http://localhost:5000/api/auth/toggleMenuItemStatus", {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(menuItemId),
+             const response = await fetch(`http://localhost:5000/api/auth/toggleMenuItemStatus/${id}`, {
+                method: "PATCH"
             });
             const result = await response.json();
 
@@ -47,13 +62,13 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
                                             <p>$<input type="number" step="0.01" defaultValue={menuItemData.itemPrice}></input></p>
                                         </div> 
 
-                                        <textarea className="itemViewDesc">{menuItemData.itemDesc}</textarea>
+                                        <textarea className="itemViewDesc" defaultValue={menuItemData.itemDesc}></textarea>
 
-                                        <button>Submit Edit</button> 
-                                        <button>Delete Item</button>
+                                        <button type="submit">Submit Edit</button> 
+                                        <button type="button" onClick={() => deleteMenuItem(menuItemData.id)}>Delete Item</button>
                                     </form>
                                     
-                                    <p>Item availability: <button onClick={() => ToggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus ? "Available" : "Unavailable"}</button></p> 
+                                    <p>Item availability: <button onClick={() => toggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus ? "Available" : "Unavailable"}</button></p> 
                                     
                                 </div>
                                 
