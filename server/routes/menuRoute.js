@@ -9,7 +9,7 @@ app.post("/addMenuCategory", async (req, res) => {
     const categoryName = req.body.categoryInsertValue;
 
     try {
-      let checkTable = "SELECT * FROM menuCategories WHERE categoryName = ?";
+      const checkTable = "SELECT * FROM menuCategories WHERE categoryName = ?";
       con.query(checkTable, [categoryName], (checkErr, checkResult) => { 
         if (checkErr) {
           console.error("Error checking category:", checkErr);
@@ -21,7 +21,7 @@ app.post("/addMenuCategory", async (req, res) => {
         }
 
 
-        let table = "INSERT INTO menuCategories (categoryName) VALUES (?)"; 
+        const table = "INSERT INTO menuCategories (categoryName) VALUES (?)"; 
         con.query(table, [categoryName], function (err, result) {
           if (err) {
               console.error("Failed to insert catagory:", err);
@@ -36,7 +36,52 @@ app.post("/addMenuCategory", async (req, res) => {
     } catch (error) {
         return res.status(500).json({ success: false, error: "Error from inserting category!" });
     }
-}); 
+});  
+
+
+app.patch("/editMenuCategory", async (req, res) => { 
+  const { id, categoryName } = req.body;
+  if (!id || !categoryName) {
+    return res.status(400).json({ success: false, error: "Missing category ID and or category data." });
+  } 
+
+  try { 
+    con.query("SELECT categoryName FROM menuCategories WHERE id = ?", [id], (err, result) => { 
+      if (err) {
+        return res.status(500).json({ success: false, error: "Database error retrieving original category." });
+      }
+
+      if (result.length === 0) {
+        return res.status(404).json({ success: false, error: "Menu category not found using id." });
+      } 
+      const originalCategoryName = result[0].categoryName; 
+
+      const menuItemTable = "UPDATE menuItems SET itemCategory = ? WHERE itemCategory = ?"; 
+      con.query(menuItemTable, [categoryName, originalCategoryName], (err, result) => { 
+        if (err) { 
+          console.error("Update menuItem category error:", err);
+          return res.status(500).json({ success: false, error: "Error updating menu item categories." });
+        }  
+
+
+        const table = "UPDATE menuCategories SET categoryName = ? WHERE id = ?"; 
+        con.query(table, [categoryName, id], function(err, result) { 
+          if (err) { 
+            return res.status(500).json({ success: false, error: "Database Error from updating menu category!" });
+          }
+          if (result.affectedRows === 0) {
+            return res.status(404).json({ success: false, error: "Menu category not found" });
+          } 
+
+          return res.json({ success: true, message: "Menu category updated successfully" });
+        });
+      });
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: "Error from updating menu category!" });
+  }
+
+});
 
 
 app.post("/addMenuItem", async (req, res) => { 
@@ -44,7 +89,7 @@ app.post("/addMenuItem", async (req, res) => {
     let menuItemStatus = true;
 
     try { 
-      let table = "INSERT INTO menuItems (itemName, itemDesc, itemCategory, itemStatus, itemPrice) VALUES (?, ?, ?, ?, ?)"; 
+      const table = "INSERT INTO menuItems (itemName, itemDesc, itemCategory, itemStatus, itemPrice) VALUES (?, ?, ?, ?, ?)"; 
       con.query(table, [menuItemName, menuItemDesc, menuItemCategory, menuItemStatus, menuItemPrice], function (err, result) {
             if (err) {
                 console.error("Failed to insert menu item:", err);

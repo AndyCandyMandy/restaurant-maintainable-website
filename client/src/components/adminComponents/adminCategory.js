@@ -2,8 +2,10 @@ import { useState } from "react";
 
 import "./AdminCategory.css"; 
 
-function AdminCategory({ categories, updateCategory, error }) { 
+function AdminCategory({ categories, updateCategory, updateMenuItem, error }) { 
     const [categoryInsertValue, setCategoryInsertValue] = useState(""); 
+
+    const [editCategoryValue, setEditCategoryValue] = useState({}); 
 
     const submitCategory = async (e) => { 
         e.preventDefault(); 
@@ -30,6 +32,36 @@ function AdminCategory({ categories, updateCategory, error }) {
         }
     };
 
+    const editCategory = async (e ,id) => { 
+        e.preventDefault();
+
+         const categoryName = editCategoryValue[id]; 
+         if (!categoryName) {
+            console.log("No edited category name provided.");
+            return;
+        }
+
+        const categoryData = { id, categoryName }; 
+        try { 
+            const response = await fetch("http://localhost:5000/api/auth/editMenuCategory", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(categoryData),
+            });
+            const result = await response.json();
+
+            if (response.ok) {
+                console.log("Updating category was successful."); 
+                updateCategory(); 
+                updateMenuItem();
+            }
+            else {
+                console.log("Failed updating category", result.error);
+            }
+        } catch (error) {
+            console.error("Failed to patch category value to database:", error);
+        }
+    };
 
     const deleteCategory = async (id) => { 
         try { 
@@ -64,14 +96,14 @@ function AdminCategory({ categories, updateCategory, error }) {
 
             <div>
                 {categories.map((categoryData, index) => (
-                    <div className="categoryItem">
-                        <p key={index}>{categoryData.id}. {categoryData.categoryName} </p> 
-
+                    <form className="categoryItem" onSubmit={(e) => editCategory(e, categoryData.id)} key={categoryData.id}>
+                        <p>{categoryData.id}. <input type="text" defaultValue={categoryData.categoryName} onChange={(e) => setEditCategoryValue({...editCategoryValue, [categoryData.id]: e.target.value})} required></input></p> 
+                        
                         <div>
-                            <button>Edit</button>
-                            <button onClick={() => deleteCategory(categoryData.id)}>Delete</button>
+                            <button type="submit" disabled={(editCategoryValue[categoryData.id] ?? categoryData.categoryName) === categoryData.categoryName}>Edit</button>
+                            <button type="button" onClick={() => deleteCategory(categoryData.id)}>Delete</button>
                         </div>
-                    </div>    
+                    </form>    
                 ))}
             </div>
             

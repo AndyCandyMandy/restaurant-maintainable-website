@@ -33,7 +33,7 @@ function AdminPage() {
             <section className="adminMenuSection"> 
                 <h1>Menu Customization</h1>
                 
-                <AdminCategory categories={categories} updateCategory={updateCategory} error={errorCategory}></AdminCategory> 
+                <AdminCategory categories={categories} updateCategory={updateCategory} updateMenuItem={updateMenuItem} error={errorCategory}></AdminCategory> 
 
                 <AdminMenuItem categories={categories} updateMenuItem={updateMenuItem} error={errorMenuItem}></AdminMenuItem>
 
