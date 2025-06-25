@@ -32,11 +32,11 @@ function AdminCategory({ categories, updateCategory, updateMenuItem, error }) {
         }
     };
 
-    const editCategory = async (e ,id) => { 
+    const editCategory = async (e, id) => { 
         e.preventDefault();
 
-         const categoryName = editCategoryValue[id]; 
-         if (!categoryName) {
+        const categoryName = editCategoryValue[id]; 
+        if (!categoryName) {
             console.log("No edited category name provided.");
             return;
         }

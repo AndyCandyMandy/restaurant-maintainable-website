@@ -84,6 +84,7 @@ app.patch("/editMenuCategory", async (req, res) => {
 });
 
 
+
 app.post("/addMenuItem", async (req, res) => { 
     const {  menuItemCategory, menuItemName, menuItemPrice, menuItemDesc } = req.body; 
     let menuItemStatus = true;
@@ -102,6 +103,29 @@ app.post("/addMenuItem", async (req, res) => {
     } catch (error) {
       return res.status(500).json({ success: false, error: "Error from inserting menu item!" });
     }
+});
+
+
+app.patch("/editMenuItem", async (req, res) => { 
+  const { id, menuItemName, menuItemPrice, menuItemDesc } = req.body; 
+  if (!id || !menuItemName || !menuItemPrice || !menuItemDesc) {
+    return res.status(400).json({ success: false, error: "Missing menu item ID, name, price and or desc data." });
+  }  
+
+  try {
+    const table = "UPDATE menuItems SET itemName = ?, itemPrice = ?, itemDesc = ? WHERE id = ?"; 
+    con.query(table, [menuItemName, menuItemPrice, menuItemDesc, id], (err, result) => { 
+      if (err) {
+        console.error("Failed to update menu item:", err);
+        return res.status(500).json({ success: false, error: "Database error" });
+      } 
+
+      return res.json({ success: true, message: "Menu item updated successfully" });
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: "Error from updating menu item!" });
+  }
+
 });
 
 
