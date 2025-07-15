@@ -20,6 +20,10 @@ app.use("/api/auth", newsRoute);
 const menuRoute = require("./routes/menuRoute"); 
 app.use("/api/auth", menuRoute); 
 
+// Connects the accountRoute.js file to the project. It contains endpoints pertaining to the users table.
+const accountRoute = require("./routes/accountRoute"); 
+app.use("/api/auth", accountRoute); 
+
 // Listen on port
 app.listen(PORT, HOST, () => {
     console.log(`Running on http://${HOST}:${PORT}`);

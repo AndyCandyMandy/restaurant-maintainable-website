@@ -8,7 +8,7 @@ import {
 import Landing from "./pages/landingPage";
 import Home from "./pages/webPages/homePage"; 
 import Menu from "./pages/webPages/menuPage"; 
-import Login from "./pages/accountPages/loginPage"; 
+import Login from "./pages/accountPages/LoginPage"; 
 import Admin from "./pages/adminPages/adminPage";
 
 function App() {

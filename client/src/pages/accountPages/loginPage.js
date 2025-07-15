@@ -1,13 +1,32 @@
-function loginPage() {
-    return (
-        <div>
-            <h1>Admin Login</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu leo risus. Suspendisse et purus ut arcu pellentesque molestie. Nam sollicitudin quam nulla, non tempus ante vestibulum non. Vestibulum fringilla tincidunt felis ac imperdiet. Phasellus et ullamcorper elit, eu fringilla ligula. Cras pharetra felis id tristique condimentum. Sed lobortis tristique metus, in accumsan tellus vulputate ac. Nam nec libero purus. Nam accumsan a ex ac molestie. Nulla vel accumsan tellus. Quisque eget ex urna. Aenean pharetra eget neque et euismod.
-            </p>
+import { useState } from "react";
+import {Link} from "react-router-dom"; 
 
+import "./LoginPage.css"; 
+
+function LoginPage() {
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState(""); 
+
+    const handleLoginIn = async (e) => { 
+        e.preventDefault();
+
+        const loginData = { userName, password };
+    }
+
+    return (
+        <div className="loginSection"> 
+
+            <form className="loginBody" onSubmit={handleLoginIn}>
+                <h1>Login</h1>
+                <input type="text" placeholder="Enter Username..." onChange={(e) => setUserName(e.target.value)} required></input> 
+                <input type="text" placeholder="Enter Password..." onChange={(e) => setPassword(e.target.value)} required></input> 
+
+                <button type="submit">Login</button> 
+                <Link to="/">Cancel</Link> 
+            </form>
+            
         </div>
     );
 } 
 
-export default loginPage;
+export default LoginPage;
