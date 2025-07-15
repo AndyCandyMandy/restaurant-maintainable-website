@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; 
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useNavigate, useLocation } from "react-router-dom"; 
 
 import "./stickyHeader.css"; 
 
@@ -7,9 +7,17 @@ import { scrollSectionBtn, scrollTopBtn } from "../../utils/scrollTo.js";
 
 function StickyHeader() { 
     const [isHeaderContentOpen, setIsHeaderContentOpen] = useState(false); 
+    const [userType, setUserType] = useState(""); 
+    const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {  
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) { 
+            const user = JSON.parse(storedUser);
+            setUserType(user.userType); 
+        }
+
         // Function closes the hamburger menu when the header is no longer attached/sticky
         // (Closes the hamburger menu when the viewport deteches the header)
         const handleHeaderScroll = () => { 
@@ -50,6 +58,15 @@ function StickyHeader() {
         setIsHeaderContentOpen(false);
     }
 
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        navigate("/");
+    };
+
+
     return (
         <header className="headerSection" id="headerId"> 
                 
@@ -63,7 +80,12 @@ function StickyHeader() {
                     <p className="headerBtnContent" onClick={() => {scrollSectionBtn("specialId"); turnOffHamburger()}}>Specials</p> 
                     <p className="headerBtnContent" onClick={() => {scrollSectionBtn("contactId"); turnOffHamburger()}}>Contact</p>
                     <Link className="headerBtnContent" to="/Home/Menu">Menu</Link> 
-                    <Link className="headerBtnContent" to="/Admin">Admin</Link>
+                    {userType === "admin_account" && ( 
+                        <>
+                            <Link className="headerBtnContent" to="/Admin">Admin</Link>
+                            <p className="headerBtnContent" onClick={handleLogout}>Logout</p>
+                        </>
+                    )}  
                 </div> 
             } 
 
@@ -72,7 +94,12 @@ function StickyHeader() {
                     <p className="headerBtnContent" onClick={() => {scrollTopBtn(); turnOffHamburger()}}>Search</p> 
                     
                     <Link className="headerBtnContent" to="/Home">Home</Link> 
-                    <Link className="headerBtnContent" to="/Admin">Admin</Link>
+                    {userType === "admin_account" && ( 
+                        <>
+                            <Link className="headerBtnContent" to="/Admin">Admin</Link>
+                            <p className="headerBtnContent" onClick={handleLogout}>Logout</p>
+                        </>
+                    )}
                 </div>
             }
 
