@@ -84,49 +84,49 @@ function MenuPage() {
                         <p>Apologies for any future inconvienances</p>
                     </section>
                 ) : (
-                categories.map((categoryData) => (
-                    <section className="menuCatagory" key={categoryData.id}> 
-                        <h2 className="menuCatagoryHeader">{categoryData.categoryName}</h2> 
+                    categories.map((categoryData) => (
+                        <section className="menuCatagory" key={categoryData.id}> 
+                            <h2 className="menuCatagoryHeader">{categoryData.categoryName}</h2> 
 
-                        <div className="menuCatagoryContents">
-
-
-                            {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName && 
-                            (
-                                menuItem.itemName.toLowerCase().includes(searchBarContent.toLowerCase()) || 
-                                menuItem.itemDesc.toLowerCase().includes(searchBarContent.toLowerCase())
-                            )
-                            ).map((menuItemData) => (  
-                                <div className="menuItem" key={menuItemData.id}> 
-                                {menuItemData.itemStatus ? ( 
-                                    <>
-                                        <div className="itemHeader">
-                                            <h3><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
-                                            <h3><span>$</span>{menuItemData.itemPrice}</h3>
-                                        </div>  
-                                        <div className="itemBody">
-                                            <p>{menuItemData.itemDesc}</p>
-                                        </div> 
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="itemHeader">
-                                            <h3 className="missingItemHeader"><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
-                                            <h3 className="missingItemHeader"><span>$</span>{menuItemData.itemPrice}</h3>
-                                        </div>  
-                                        <div className="itemBody">
-                                            <p className="missingItemBody">(Currently Unavailable) {menuItemData.itemDesc}</p>
-                                        </div> 
-                                    </>
-                                )}
-                                </div>
-                            ))}
+                            <div className="menuCatagoryContents">
 
 
-                        </div>
-                    </section>
-                )))}
- 
+                                {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName && 
+                                (
+                                    menuItem.itemName.toLowerCase().includes(searchBarContent.toLowerCase()) || 
+                                    menuItem.itemDesc.toLowerCase().includes(searchBarContent.toLowerCase())
+                                )
+                                ).map((menuItemData) => (  
+                                    <div className="menuItem" key={menuItemData.id}> 
+                                    {menuItemData.itemStatus ? ( 
+                                        <>
+                                            <div className="itemHeader">
+                                                <h3><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
+                                                <h3><span>$</span>{menuItemData.itemPrice}</h3>
+                                            </div>  
+                                            <div className="itemBody">
+                                                <p>{menuItemData.itemDesc}</p>
+                                            </div> 
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="itemHeader">
+                                                <h3 className="missingItemHeader"><span>{menuItemData.id}</span>. {menuItemData.itemName}</h3> 
+                                                <h3 className="missingItemHeader"><span>$</span>{menuItemData.itemPrice}</h3>
+                                            </div>  
+                                            <div className="itemBody">
+                                                <p className="missingItemBody">(Currently Unavailable) {menuItemData.itemDesc}</p>
+                                            </div> 
+                                        </>
+                                    )}
+                                    </div>
+                                ))}
+
+
+                            </div>
+                        </section>
+                    ))
+                )}
             </main> 
 
 

@@ -94,19 +94,25 @@ function AdminCategory({ categories, updateCategory, updateMenuItem, error }) {
 
             {error && <p style={{ color: "red" }}>{error}</p>}
 
-            <div>
-                {categories.map((categoryData, index) => (
-                    <form className="categoryItem" onSubmit={(e) => editCategory(e, categoryData.id)} key={categoryData.id}>
-                        <p>{categoryData.id}. <input type="text" defaultValue={categoryData.categoryName} onChange={(e) => setEditCategoryValue({...editCategoryValue, [categoryData.id]: e.target.value})} required></input></p> 
-                        
-                        <div>
-                            <button type="submit" disabled={(editCategoryValue[categoryData.id] ?? categoryData.categoryName) === categoryData.categoryName}>Edit</button>
-                            <button type="button" onClick={() => deleteCategory(categoryData.id)}>Delete</button>
-                        </div>
-                    </form>    
-                ))}
-            </div>
-            
+
+            {categories.length === 0 ? (
+                <div>
+                    <h4>There are currently no categories present</h4>
+                </div>
+            ) : (
+                <div className="categoryItemHolder"> 
+                    {categories.map((categoryData, index) => (
+                        <form className="categoryItem" onSubmit={(e) => editCategory(e, categoryData.id)} key={categoryData.id}>
+                            <p>{categoryData.id}. <input type="text" defaultValue={categoryData.categoryName} onChange={(e) => setEditCategoryValue({...editCategoryValue, [categoryData.id]: e.target.value})} required></input></p> 
+                            
+                            <div>
+                                <button type="submit" disabled={(editCategoryValue[categoryData.id] ?? categoryData.categoryName) === categoryData.categoryName}>Edit</button>
+                                <button type="button" onClick={() => deleteCategory(categoryData.id)}>Delete</button>
+                            </div>
+                        </form>    
+                    ))}
+                </div>
+            )}
         </div>
     );
 } 
