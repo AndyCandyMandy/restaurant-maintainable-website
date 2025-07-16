@@ -3,16 +3,50 @@ body {
 
 }
 
-/* CSS Elements intented for the landing page */
-.landingText {
-  text-align: center;
+/* CSS Elements intented for the landing page */ 
+.landingBody { 
+  height: 80vh;
+
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center; 
 }
 
-.landingBtnBox {
+
+.landingText { 
+  background-color: white;
+
+  margin: 5rem 4rem 0; 
+  padding: 1rem;
+}
+
+.landingBtnBox { 
+  margin: 1rem 0 0;
+
   display: flex;
   flex-direction: row;  
   align-items: center;
   justify-content: center; 
+} 
+
+.landingBtn {
+    display: block;
+    margin: 0 1rem;
+    padding: 1rem;
+
+    background-color: #f76350;
+    color: white;
+    font-size: 1rem; 
+    text-decoration: none; 
+
+    transition: transform 0.2s ease-in-out;
+} 
+
+.landingBtn:hover {
+  background-color: #ff3500; 
+
+  transform: scale(1.1);
 } 
 
 /* CSS Elements intented for the home page */
@@ -421,7 +455,14 @@ body {
   color: #a1a1a1;
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {  
+  
+  .landingText { 
+
+    margin: 2rem 1rem 0; 
+    padding: 1rem;
+  }
+
   .menuTitleContent {
     width: 100vw;
   }  

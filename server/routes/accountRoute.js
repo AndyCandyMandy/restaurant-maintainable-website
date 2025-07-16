@@ -2,11 +2,12 @@
 
 const express = require("express");
 const app = express.Router(); 
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); 
 const con = require("../db");  
 
 require("dotenv").config(); 
 
+// Account endpoint: Accepts a userName and password to create a token to carry the login state.
 app.post("/loginAccount", async (req, res) => { 
     const { userName, password } = req.body;
 

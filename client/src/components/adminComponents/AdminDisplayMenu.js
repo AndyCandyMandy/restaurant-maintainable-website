@@ -101,7 +101,7 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
                     <div key={categoryData.id}>
                         <h3>{categoryData.categoryName}</h3>
 
-                        <div> 
+                        <div className="itemViewHolder"> 
 
                             {menuItems.filter((menuItem) => menuItem.itemCategory === categoryData.categoryName).map((menuItemData) => ( 
                                 <div key={menuItemData.id}>

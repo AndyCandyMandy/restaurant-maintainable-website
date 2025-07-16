@@ -1,3 +1,10 @@
+.itemViewHolder { 
+  height: 50vh;
+
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
 .itemViewHeader {
   width: 100%; 
 

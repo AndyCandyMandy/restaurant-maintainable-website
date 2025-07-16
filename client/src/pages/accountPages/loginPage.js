@@ -38,11 +38,13 @@ function LoginPage() {
 
             <form className="loginBody" onSubmit={handleLoginIn}>
                 <h1>Login</h1>
-                <input type="text" placeholder="Enter Username..." onChange={(e) => setUserName(e.target.value)} required></input> 
-                <input type="text" placeholder="Enter Password..." onChange={(e) => setPassword(e.target.value)} required></input> 
+                <input className="loginTextEntry" type="text" placeholder="Enter Username..." onChange={(e) => setUserName(e.target.value)} required></input> 
+                <input className="loginTextEntry" style={{ margin: "1rem 0 0" }} type="password" placeholder="Enter Password..." onChange={(e) => setPassword(e.target.value)} required></input> 
 
-                <button type="submit">Login</button> 
-                <Link to="/">Cancel</Link> 
+                <div className="loginBtnBox"> 
+                    <button className="loginBtn" type="submit">Login</button> 
+                    <Link className="loginBtn" to="/">Cancel</Link> 
+                </div>
             </form>
             
         </div>

@@ -34,8 +34,8 @@ function AdminMenuItem({ categories, updateMenuItem, error }) {
 
 
     return ( 
-        <form className="adminMenuContent" onSubmit={submitMenuItem}>
-            <h3>Add menu item:</h3> 
+        <form className="adminMenuContent" style={{ marginBottom: "1rem" }} onSubmit={submitMenuItem}>
+            <h3 style={{ margin: "2rem 0 0" }}>Add menu item:</h3> 
 
             <div className="menuNamePriceSection"> 
                 <div> 

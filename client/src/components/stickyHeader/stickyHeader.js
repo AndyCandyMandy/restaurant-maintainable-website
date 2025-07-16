@@ -58,7 +58,7 @@ function StickyHeader() {
         setIsHeaderContentOpen(false);
     }
 
-
+    // Function logouts the user account by removing webtoken.
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
