@@ -48,9 +48,37 @@
   justify-content: center;
 }
 
+.adminButtonBox {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;
+}
+
+.adminMenuButton { 
+  margin: 1rem;
+  padding: 1rem;
+
+  background-color: #f76350;
+  color: white;
+  font-size: 1rem; 
+  text-decoration: none; 
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.adminMenuButton:hover {
+  background-color: #ff3500; 
+
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) { 
   .adminTitleContent {
     width: 100vw;
   } 
 
+  .adminMenuContent {
+    width: 75vw;
+  }
 }

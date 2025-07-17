@@ -45,8 +45,12 @@ function AdminPage() {
 
             </section>
 
-            <Link to="/Home">Home</Link> 
-            <Link to="/Home/Menu">Menu</Link> 
+            <section className="adminButtonBox">
+                <Link className="adminMenuButton" to="/Home">Home</Link> 
+                <Link className="adminMenuButton" to="/Home/Menu">Menu</Link> 
+            </section>
+            
+            <footer className="footerSection"></footer>
         </div>
     );
 } 

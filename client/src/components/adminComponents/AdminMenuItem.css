@@ -4,13 +4,26 @@
   display: flex;
   flex-direction: row;  
   align-items: center;
-  justify-content: center;  
   justify-content: space-between;
 } 
+
+.menuItemPriceInput {
+  width: 8rem; 
+}
 
 .menuItemDescInput {
   width: 100%; 
   height: 5rem; 
 
   resize: none;
+} 
+
+@media (max-width: 768px) {  
+  .menuNamePriceSection { 
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    justify-content: center;  
+  } 
+
 }
