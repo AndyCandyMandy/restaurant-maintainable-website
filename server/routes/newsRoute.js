@@ -4,6 +4,9 @@ const express = require("express");
 const app = express.Router();
 const con = require("../db"); 
 
+
+// News endpoint: Accepts a news value and creates a data/time value to insert into the newsContent table 
+// (If the items in the table exceed 6, remove the oldest item then add in the new item. Else add in the new item.)
 app.post("/addNews", async (req, res) => { 
     const newsData = req.body.newsInsertValue;
     var date_time = new Date();
@@ -31,6 +34,7 @@ app.post("/addNews", async (req, res) => {
           }
 
 
+        // Inline function that adds the news item into the table
         function insertNews() { 
           con.query("INSERT INTO newsContent (newsText, lastUsed) VALUES (?, ?)", [newsData, date_time], function (err, result) {
             if (err) {
@@ -48,6 +52,7 @@ app.post("/addNews", async (req, res) => {
     }
 }); 
 
+// News endpoint: Returns all the news items from the newsContent table
 app.get("/allNewsData", (req, res) => {
   con.query("SELECT * FROM newsContent ORDER BY id DESC;", function (err, result) {
     if (err) {

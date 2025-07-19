@@ -4,7 +4,7 @@ const express = require("express");
 const app = express.Router();
 const con = require("../db"); 
 
-
+// Menu Category endpoint: Accepts the category name to be inserted into the menuCategories table. Also insures that there is only ever one category name
 app.post("/addMenuCategory", async (req, res) => { 
     const categoryName = req.body.categoryInsertValue;
 
@@ -38,14 +38,16 @@ app.post("/addMenuCategory", async (req, res) => {
     }
 });  
 
-
+// Menu Category endpoint: Accepts a new category name value and category id of the category that wants to be edited. 
+// (Also updates the menuItems with the original category name based on the accepted id)
 app.patch("/editMenuCategory", async (req, res) => { 
   const { id, categoryName } = req.body;
   if (!id || !categoryName) {
     return res.status(400).json({ success: false, error: "Missing category ID and or category data." });
   } 
 
-  try { 
+  try {  
+    // Select the original category name based on its id
     con.query("SELECT categoryName FROM menuCategories WHERE id = ?", [id], (err, result) => { 
       if (err) {
         return res.status(500).json({ success: false, error: "Database error retrieving original category." });
@@ -56,6 +58,7 @@ app.patch("/editMenuCategory", async (req, res) => {
       } 
       const originalCategoryName = result[0].categoryName; 
 
+      // Updates the menu items with the old category names to the new inserted name value
       const menuItemTable = "UPDATE menuItems SET itemCategory = ? WHERE itemCategory = ?"; 
       con.query(menuItemTable, [categoryName, originalCategoryName], (err, result) => { 
         if (err) { 
@@ -63,7 +66,7 @@ app.patch("/editMenuCategory", async (req, res) => {
           return res.status(500).json({ success: false, error: "Error updating menu item categories." });
         }  
 
-
+        // Updates the category name in the categoryName table
         const table = "UPDATE menuCategories SET categoryName = ? WHERE id = ?"; 
         con.query(table, [categoryName, id], function(err, result) { 
           if (err) { 
@@ -84,7 +87,7 @@ app.patch("/editMenuCategory", async (req, res) => {
 });
 
 
-
+// Menu Item endpoint: Accepts a menu category, item name, price, and desc to add a new menu item into the menuItem table
 app.post("/addMenuItem", async (req, res) => { 
     const {  menuItemCategory, menuItemName, menuItemPrice, menuItemDesc } = req.body; 
     let menuItemStatus = true;
@@ -105,7 +108,7 @@ app.post("/addMenuItem", async (req, res) => {
     }
 });
 
-
+// Menu Item endpoint: Accepts an id to the original menu item, new item name, new price, and new desciption to update the oringial menu item
 app.patch("/editMenuItem", async (req, res) => { 
   const { id, menuItemName, menuItemPrice, menuItemDesc } = req.body; 
   if (!id || !menuItemName || !menuItemPrice || !menuItemDesc) {
@@ -128,7 +131,7 @@ app.patch("/editMenuItem", async (req, res) => {
 
 });
 
-
+// Menu Item endpoint: Accepts an item id to toggle the itemStatus of the menu item
 app.patch("/toggleMenuItemStatus/:id", async (req, res) => { 
   const { id } = req.params;
   if (!id) {
@@ -153,7 +156,7 @@ app.patch("/toggleMenuItemStatus/:id", async (req, res) => {
   }
 });
 
-
+// Menu Category endpoint: Returns all the category items from the menuCategories table
 app.get("/allCategoryData", (req, res) => {
   con.query("SELECT * FROM menuCategories", function (err, result) {
     if (err) {
@@ -164,7 +167,7 @@ app.get("/allCategoryData", (req, res) => {
   });
 }); 
 
-
+// Menu Item endpoint: Returns all the menu items from the menuItems table
 app.get("/allMenuItemData", (req, res) => {
   con.query("SELECT * FROM menuItems", function (err, result) {
     if (err) {
@@ -176,6 +179,7 @@ app.get("/allMenuItemData", (req, res) => {
 });
 
 
+// Menu Category endpoint: Accepts the id of a category which is used to delete the menu items assigned to the category and then the category
 app.delete("/deleteCategory/:id", (req, res) => { 
   const { id } = req.params;
   if (!id) {
@@ -209,7 +213,7 @@ app.delete("/deleteCategory/:id", (req, res) => {
 
 });
 
-
+// Menu Item endpoint: Accepts the id of a menu item which is used to delete its corresponding menu item
 app.delete("/deleteMenuItem/:id", (req, res) => { 
   const { id } = req.params;
   if (!id) {
