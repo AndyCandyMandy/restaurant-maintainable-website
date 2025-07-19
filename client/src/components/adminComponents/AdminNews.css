@@ -1,0 +1,12 @@
+.td, th { 
+    width: 100%; 
+    margin: 0 5rem 0;
+
+    border: 2px solid #e3e3e3;
+    text-align: left;
+    padding: 5px;
+} 
+
+tr:nth-child(odd) {
+  background-color: #e3e3e3;
+}

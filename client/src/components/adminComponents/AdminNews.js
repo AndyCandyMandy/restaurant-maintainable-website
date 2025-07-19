@@ -1,5 +1,7 @@
 import { useState } from "react"; 
 
+import "./AdminNews.css"; 
+
 function AdminNews({ news, updateNews, error }) { 
     const [newsInsertValue, setNewsInsertValue] = useState(""); 
 
@@ -18,7 +20,6 @@ function AdminNews({ news, updateNews, error }) {
             if (response.ok) {
                 console.log("Submitting news value was successful."); 
                 updateNews(); 
-                setNewsInsertValue("");
             }
             else {
                 console.log("Failed submitting news", result.error);
@@ -30,19 +31,40 @@ function AdminNews({ news, updateNews, error }) {
 
     return ( 
         <>
-        <h1>Announcement Setting</h1> 
+            <h1>Announcement Setting</h1> 
 
-        <form onSubmit={submitNews}>
-            <input type="text" placeholder="Input announcement..." onChange={(e) => setNewsInsertValue(e.target.value)}></input>    
-            <button type="submit">Post</button> 
-            <button>Clear Display</button>
-        </form>
-        
-        {error && <p style={{ color: "red" }}>{error}</p>}
+            <form onSubmit={submitNews}>
+                <input type="text" placeholder="Input announcement..." onChange={(e) => setNewsInsertValue(e.target.value)}></input>    
+                <button type="submit">Post</button> 
+                <button>Clear Display</button>
+            </form>
+            
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
+            <p>Currently displayed announcement: {news.length > 0 && (news[0].newsText)}</p>
         
-        <p>Currently displayed announcement: {news.length > 0 && (news[0].newsText)}</p>
-        
+            {news.length === 0 ? ( 
+                <table> 
+                    <tr>
+                        <th>Annoucement Content</th> 
+                        <th>Submission Time</th>
+                    </tr>
+                    <h3>There are no past annoucements...</h3>
+                </table>
+            ) : ( 
+                <table>
+                    <tr>
+                        <th>Annoucement Content</th> 
+                        <th>Submission Time</th>
+                    </tr>
+                    {news.map((newsData, index) => (
+                        <tr key={newsData.id}> 
+                            <td>{newsData.newsText}</td> 
+                            <td>{newsData.lastUsed}</td>
+                        </tr>
+                    ))}
+                </table>
+            )}
             
         </>
     );
