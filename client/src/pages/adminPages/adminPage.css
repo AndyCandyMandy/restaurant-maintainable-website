@@ -28,8 +28,10 @@
 } 
 
 .adminNewsSection, .adminMenuSection, .adminMenuEditSection { 
-  background-color: white;
-  margin: 1rem 2rem 1rem;
+  background-color: white; 
+  border-radius: 25px;
+  margin: 1rem 5rem 1rem; 
+  padding: 1rem;
 
   text-align: center;
 
@@ -76,6 +78,10 @@
 @media (max-width: 768px) { 
   .adminTitleContent {
     width: 100vw;
+  } 
+
+  .adminNewsSection, .adminMenuSection, .adminMenuEditSection { 
+    margin: 1rem 2rem 1rem; 
   } 
 
   .adminMenuContent {

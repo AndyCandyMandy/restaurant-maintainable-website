@@ -84,12 +84,12 @@ function AdminCategory({ categories, updateCategory, updateMenuItem, error }) {
 
 
     return ( 
-        <div className="adminMenuContent">
+        <>
             <h3>Menu Category</h3> 
 
             <form onSubmit={submitCategory}>
-                <input type="text" placeholder="Input menu category..." onChange={(e) => setCategoryInsertValue(e.target.value)} required></input> 
-                <button type="submit">Submit</button>
+                <input className="categoryTextEntry" type="text" placeholder="Input menu category..." onChange={(e) => setCategoryInsertValue(e.target.value)} required></input> 
+                <button className="categoryBtnEntry" type="submit">Submit</button>
             </form>  
 
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -97,23 +97,23 @@ function AdminCategory({ categories, updateCategory, updateMenuItem, error }) {
 
             {categories.length === 0 ? (
                 <div>
-                    <h4>There are currently no categories present</h4>
+                    <h4>Please add a category to organize your menu...</h4>
                 </div>
             ) : (
                 <div className="categoryItemHolder"> 
                     {categories.map((categoryData, index) => (
                         <form className="categoryItem" onSubmit={(e) => editCategory(e, categoryData.id)} key={categoryData.id}>
-                            <p>{categoryData.id}. <input type="text" defaultValue={categoryData.categoryName} onChange={(e) => setEditCategoryValue({...editCategoryValue, [categoryData.id]: e.target.value})} required></input></p> 
+                            <p>{categoryData.id}. <input className="categoryItemTextEntry" type="text" defaultValue={categoryData.categoryName} onChange={(e) => setEditCategoryValue({...editCategoryValue, [categoryData.id]: e.target.value})} required></input></p> 
                             
                             <div>
-                                <button type="submit" disabled={(editCategoryValue[categoryData.id] ?? categoryData.categoryName) === categoryData.categoryName}>Edit</button>
-                                <button type="button" onClick={() => deleteCategory(categoryData.id)}>Delete</button>
+                                <button className="categoryBtnEntry" type="submit" disabled={(editCategoryValue[categoryData.id] ?? categoryData.categoryName) === categoryData.categoryName}>Edit</button>
+                                <button className="categoryBtnEntry" type="button" onClick={() => deleteCategory(categoryData.id)}>Delete</button>
                             </div>
                         </form>    
                     ))}
                 </div>
             )}
-        </div>
+        </>
     );
 } 
 

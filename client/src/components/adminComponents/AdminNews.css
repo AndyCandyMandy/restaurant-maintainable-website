@@ -1,10 +1,63 @@
-.td, th { 
-    width: 100%; 
-    margin: 0 5rem 0;
+.newsFormEntry {
+  width: 100%; 
 
-    border: 2px solid #e3e3e3;
-    text-align: left;
-    padding: 5px;
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;
+}
+
+.newsTextEntry { 
+  width: 40vw;
+
+  padding: 7px; 
+
+  caret-color: #ff3500; 
+  background-color: #e3e3e3; 
+  border: 1px solid #e3e3e3;
+} 
+
+.newsBtnEntryBox {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center;
+}
+
+.newsBtnEntry {  
+  margin: 5px; 
+  padding: 7px;
+
+  background-color: #f76350; 
+  border: none;
+  color: white; 
+  font-size: 1rem;
+  text-decoration: none; 
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.newsBtnEntry:hover {
+  background-color: #ff3500; 
+
+  transform: scale(1.1);
+}
+
+.newsEmptyDisplay { 
+  padding: 1rem;
+
+  background-color: #e3e3e3; 
+  margin: 0;
+  width: 100vw; 
+}
+
+.td, th { 
+  width: 100%; 
+  margin: 0 5rem 0;
+
+  border: 2px solid #e3e3e3;
+  text-align: left;
+  padding: 5px;
 } 
 
 tr:nth-child(odd) {
