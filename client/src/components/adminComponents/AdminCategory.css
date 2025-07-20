@@ -1,3 +1,9 @@
+.categoryHeaderBox {
+  width: 100%; 
+
+  text-align: left;
+}
+
 .categoryTextEntry { 
   width: 40vw;
 
@@ -24,7 +30,23 @@
 .categoryBtnEntry:hover {
   background-color: #ff3500; 
 
+  cursor: pointer; 
+
   transform: scale(1.1);
+}
+
+.categoryBtnEntry:disabled {
+  background-color: #966c66; 
+  color: #c9c9c9;  
+} 
+
+.categoryBtnEntry:disabled:hover {
+  background-color: #966c66; 
+  color: #c9c9c9; 
+
+  cursor: default; 
+
+  transform: none;
 }
 
 .categoryItemHolder {  

@@ -85,7 +85,10 @@ function AdminCategory({ categories, updateCategory, updateMenuItem, error }) {
 
     return ( 
         <>
-            <h3>Menu Category</h3> 
+            <div className="adminMenuContent">
+                <h3>Add menu category:</h3> 
+            </div>
+            
 
             <form onSubmit={submitCategory}>
                 <input className="categoryTextEntry" type="text" placeholder="Input menu category..." onChange={(e) => setCategoryInsertValue(e.target.value)} required></input> 

@@ -39,7 +39,7 @@ function AdminMenuItem({ categories, updateMenuItem, error }) {
 
             <div className="menuNamePriceSection"> 
                 <div> 
-                    <select defaultValue="" onChange={(e) => setMenuItemCategory(e.target.value)} required>
+                    <select className="menuItemCategorySelector" defaultValue="" onChange={(e) => setMenuItemCategory(e.target.value)} required>
                         <option value="" disabled>Select an item category...</option>
                         
                         {categories.map((categoryData) => (
@@ -47,15 +47,19 @@ function AdminMenuItem({ categories, updateMenuItem, error }) {
                         ))}
                     </select>
 
-                    <input type="text" placeholder="Input item name..." onChange={(e) => setMenuItemName(e.target.value)} required></input> 
+                    <input className="menuItemTextEntry" type="text" placeholder="Input item name..." onChange={(e) => setMenuItemName(e.target.value)} required></input> 
                 </div>
                 
 
-                <p>$<input className="menuItemPriceInput" type="number" step=".01" placeholder="Input item price..." onChange={(e) => setMenuItemPrice(e.target.value)} required></input></p>
+                <p>$<input className="menuItemTextEntry menuItemPriceInput" type="number" step=".01" placeholder="Input item price..." onChange={(e) => setMenuItemPrice(e.target.value)} required></input></p>
             </div>
             
             <textarea className="menuItemDescInput" placeholder="Input item description..." onChange={(e) => setMenuItemDesc(e.target.value)} required></textarea> 
-            <button type="submit">Submit</button> 
+
+            <div className="menuItemBtnContainer"> 
+                <button className="menuItemBtn" type="submit">Submit</button> 
+            </div>
+            
 
             {error && <p style={{ color: "red" }}>{error}</p>}
 

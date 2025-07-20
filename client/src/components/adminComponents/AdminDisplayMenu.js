@@ -93,28 +93,26 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
     };
 
     return ( 
-        <div> 
-            <h1>Edit Menu</h1>
-
-            <div className="adminMenuContent" style={{ marginBottom: "1rem" }}> 
+        <> 
+            <div style={{ marginBottom: "1rem" }}> 
 
                 {menuItems.length >= 1 && (
                     <input className="itemViewSearch" type="text" placeholder="Search for menu items..." value={searchBarContent} onChange={(e) => setSearchBarContent(e.target.value)}></input>
                 )}
 
                 {categories.length === 0 ? (
-                    <div>
-                        <h3>Menu is currently empty...</h3>
+                    <div style={{ textAlign: "center" }}>
+                        <h3>Please add a food item, the menu is currently empty...</h3>
                     </div>
                 ) : (
                     categories.map((categoryData) => (
                         <div key={categoryData.id}>
-                            <h3>{categoryData.categoryName}</h3>
+                            <h3 style={{ textAlign: "left"}}>{categoryData.categoryName}</h3>
 
 
                             {menuItems.length === 0 ? (
-                                <>
-                                </>
+                                <div className="itemViewHolder">
+                                </div>
                             ) : (
                                 <div className="itemViewHolder"> 
 
@@ -125,21 +123,24 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
 
                                             <form onSubmit={(e) => editMenuItem(e, menuItemData.id)}>
                                                 <div className="itemViewHeader">  
-                                                    <p>{menuItemData.id}. <input type="text" value={editMenuName[menuItemData.id] || ""} onChange={(e) => setEditMenuName({...editMenuName, [menuItemData.id]: e.target.value})} required></input></p>
-                                                    <p>$<input type="number" step="0.01" value={editMenuPrice[menuItemData.id] || ""} onChange={(e) => setEditMenuPrice({...editMenuPrice, [menuItemData.id]: e.target.value})} required></input></p>
+                                                    <p>{menuItemData.id}. <input className="itemViewTextEntry" type="text" value={editMenuName[menuItemData.id] || ""} onChange={(e) => setEditMenuName({...editMenuName, [menuItemData.id]: e.target.value})} required></input></p>
+                                                    <p>$<input className="itemViewTextEntry" type="number" step="0.01" value={editMenuPrice[menuItemData.id] || ""} onChange={(e) => setEditMenuPrice({...editMenuPrice, [menuItemData.id]: e.target.value})} required></input></p>
                                                 </div> 
 
                                                 <textarea className="itemViewDesc" value={editMenuDesc[menuItemData.id] || ""} onChange={(e) => setEditMenuDesc({...editMenuDesc, [menuItemData.id]: e.target.value})} required></textarea>
 
-                                                <button type="submit" disabled={
-                                                    (editMenuName[menuItemData.id] ?? menuItemData.itemName) === menuItemData.itemName && 
-                                                    (editMenuPrice[menuItemData.id] ?? menuItemData.itemPrice) === menuItemData.itemPrice && 
-                                                    (editMenuDesc[menuItemData.id] ?? menuItemData.itemDesc) === menuItemData.itemDesc
-                                                }>Submit Edit</button> 
-                                                <button type="button" onClick={() => deleteMenuItem(menuItemData.id)}>Delete Item</button>
+                                                <div>
+                                                    <button className="itemViewBtn" type="submit" disabled={
+                                                        (editMenuName[menuItemData.id] ?? menuItemData.itemName) === menuItemData.itemName && 
+                                                        (editMenuPrice[menuItemData.id] ?? menuItemData.itemPrice) === menuItemData.itemPrice && 
+                                                        (editMenuDesc[menuItemData.id] ?? menuItemData.itemDesc) === menuItemData.itemDesc
+                                                    }>Submit Edit</button> 
+                                                    <button className="itemViewBtn" type="button" onClick={() => deleteMenuItem(menuItemData.id)}>Delete Item</button>
+                                                </div>
+                                                
                                             </form>
                                             
-                                            <p>Item availability: <button onClick={() => toggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus ? "Available" : "Unavailable"}</button></p> 
+                                            <p>Item availability: <button className="itemViewBtn" onClick={() => toggleMenuItemStatus(menuItemData.id)}>{menuItemData.itemStatus ? "Available" : "Unavailable"}</button></p> 
                                             
                                         </div>
                                         
@@ -152,7 +153,7 @@ function AdminDisplayMenu({ categories, menuItems, updateMenuItem }) {
                 )}
             </div>
 
-        </div>  
+        </>  
     );
 } 
 

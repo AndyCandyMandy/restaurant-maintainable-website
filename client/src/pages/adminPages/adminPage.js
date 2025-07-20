@@ -26,23 +26,25 @@ function AdminPage() {
 
 
             <section className="adminNewsSection"> 
+                <h1 className="adminMenuHeader">Announcement Setting</h1>
+
                 <AdminNews news={news} updateNews={updateNews} error={errorNews}></AdminNews>
             </section> 
 
 
             <section className="adminMenuSection"> 
-                <h1>Menu Customization</h1>
+                <h1 className="adminMenuHeader">Menu Customization</h1>
                 
                 <AdminCategory categories={categories} updateCategory={updateCategory} updateMenuItem={updateMenuItem} error={errorCategory}></AdminCategory> 
 
                 <AdminMenuItem categories={categories} updateMenuItem={updateMenuItem} error={errorMenuItem}></AdminMenuItem>
-
             </section>
             
 
             <section className="adminMenuEditSection"> 
-                <AdminDisplayMenu categories={categories} menuItems={menuItems} updateMenuItem={updateMenuItem}></AdminDisplayMenu>
+                <h1 className="adminMenuHeader">Edit Menu</h1>
 
+                <AdminDisplayMenu categories={categories} menuItems={menuItems} updateMenuItem={updateMenuItem}></AdminDisplayMenu>
             </section>
 
             <section className="adminButtonBox">

@@ -31,8 +31,6 @@ function AdminNews({ news, updateNews, error }) {
 
     return ( 
         <>
-            <h1>Announcement Setting</h1> 
-
             <form className="newsFormEntry" onSubmit={submitNews}>
                 <input className="newsTextEntry" type="text" placeholder="Input announcement..." onChange={(e) => setNewsInsertValue(e.target.value)}></input>   
                 <div className="newsBtnEntryBox">

@@ -16,7 +16,9 @@
   border: 2px solid #e3e3e3;
 
   overflow:scroll;
-  overflow-x:hidden;
+  overflow-x:hidden; 
+
+  box-sizing: border-box;
 }
 
 .itemViewHeader {
@@ -30,16 +32,72 @@
 } 
 
 .itemView { 
-  background-color: white;
+  padding: 5px;
+
+  background-color: white; 
 } 
 
 .itemView:nth-child(odd) {
   background-color: #e3e3e3;
 }
 
+.itemViewTextEntry {
+  padding: 7px; 
+
+  font-family: inherit;
+
+  caret-color: #ff3500; 
+  background-color: white; 
+  border: 1px solid #e3e3e3; 
+} 
+
 .itemViewDesc {
   width: 50vw; 
   height: 5rem; 
 
-  resize: none;
+  font-family: inherit;
+
+  resize: none; 
+
+  caret-color: #ff3500; 
+  background-color: white; 
+  border: 1px solid #e3e3e3; 
+
+  box-sizing: border-box;
+} 
+
+.itemViewBtn {
+  margin-top: 5px; 
+  padding: 7px; 
+  margin: 1px;
+
+  background-color: #f76350; 
+  border: none;
+  color: white; 
+  font-size: 1rem;
+  text-decoration: none; 
+
+  transition: transform 0.2s ease-in-out;
+} 
+
+.itemViewBtn:hover {
+  background-color: #ff3500; 
+
+  cursor: pointer; 
+
+  transform: scale(1.1);
+} 
+
+.itemViewBtn:disabled {
+  background-color: #966c66; 
+  color: #c9c9c9;  
+} 
+
+.itemViewBtn:disabled:hover {
+  background-color: #966c66; 
+  color: #c9c9c9; 
+
+  cursor: default; 
+
+  transform: none;
 }

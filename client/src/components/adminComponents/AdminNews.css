@@ -40,7 +40,23 @@
 .newsBtnEntry:hover {
   background-color: #ff3500; 
 
+  cursor: pointer;
+
   transform: scale(1.1);
+} 
+
+.newsBtnEntry:disabled {
+  background-color: #966c66; 
+  color: #c9c9c9;  
+} 
+
+.newsBtnEntry:disabled:hover {
+  background-color: #966c66; 
+  color: #c9c9c9; 
+
+  cursor: default; 
+
+  transform: none;
 }
 
 .newsEmptyDisplay { 
